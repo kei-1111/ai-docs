@@ -23,7 +23,7 @@ Delegate to Sol when the plan is settled enough that the spec determines the cod
    - What NOT to touch
 3. **Delegate** — write the brief to a file (scratchpad or temp directory) and pass its path, plus
    the narrowest verification command selected from `.claude/rules/project-validation.md`, to the
-   `codex-implementer` subagent (contract: `ai-docs/agents/codex-implementer/SKILL.md`). The harness
+   `codex-implementer` subagent (contract: `ai-docs/shared/agents/codex-implementer/SKILL.md`). The harness
    compiles the result on the host and feeds failures back into the same Codex session
    automatically. Delegate one brief at a time — parallel runs share the working tree and corrupt
    each other's change attribution.

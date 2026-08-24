@@ -29,7 +29,7 @@ target Issue; on mismatch, stop and ask — never create branches or worktrees y
    publish it as an Artifact; a product without artifact publishing writes the HTML file and
    reports its path) — and wait for the user's approval
 5. **Implement** — delegate execution to the product's default implementation lane with the
-   concrete plan (contract: `ai-docs/agents/implementer/SKILL.md`; when the project's `CLAUDE.md`
+   concrete plan (contract: `ai-docs/shared/agents/implementer/SKILL.md`; when the project's `CLAUDE.md`
    defines model routing — e.g. a delegated Codex lane — follow it, judgment-heavy
    edits staying on `implementer`), then review the diff yourself;
    a Small change may instead be edited directly without delegation. When the change adds or
