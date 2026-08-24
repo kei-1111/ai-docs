@@ -77,8 +77,7 @@ case "$verify_cmd" in
     case "$rest" in
       *'&'*|*';'*|*'|'*|*'$'*|*'>'*|*'<'*) ;;
       *)
-        # shellcheck disable=SC2086
-        ./gradlew --dry-run $rest > /dev/null 2>&1 ||
+        sh -c "./gradlew --dry-run $rest" > /dev/null 2>&1 ||
           die "-v preflight failed (infra not ready or unknown task): run ./gradlew --dry-run $rest"
         ;;
     esac
