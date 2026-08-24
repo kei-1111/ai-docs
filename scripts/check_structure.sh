@@ -31,10 +31,10 @@ done
 while IFS= read -r l; do
   [ -e "$l" ] || err "dangling symlink: $l -> $(readlink "$l")"
 done <<EOF
-$(find skills agents -type l)
+$(find skills agents rules scripts -type l)
 EOF
 
-if grep -rn 'kei-1111\.github\.io\|io\.github\.kei_1111' skills agents rules --include='*.md' | grep -v 'github.com/kei-1111/ai-docs'; then
+if grep -rn 'kei-1111\.github\.io\|io\.github\.kei_1111' skills agents rules scripts install.sh README.md; then
   err 'project-specific identifier leaked into shared content (above)'
 fi
 

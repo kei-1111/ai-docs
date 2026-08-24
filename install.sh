@@ -13,6 +13,10 @@
 #     .claude/rules/doc-surfaces.md (see README.md — Consumer contract)
 #   - agent wrappers (.claude/agents/*.md / .codex/agents/*.toml) pointing at
 #     <shared>/agents/<name>/SKILL.md
+#
+# On a name collision with an existing real file the script stops at that link;
+# move the file aside and re-run — link() is idempotent, so completed links are
+# recreated harmlessly.
 set -u
 
 CLAUDE_ONLY='codex-ask codex-implement codex-review cross-review'
@@ -25,6 +29,7 @@ case "$shared_dir" in
 esac
 shared_dir=${shared_dir#./}
 [ -d "$shared_dir/skills" ] || die "cannot locate the shared skills directory from $shared_dir"
+[ -e .git ] || die 'run from the consuming repository root (no .git here)'
 
 do_claude='' do_codex=''
 for arg in "$@"; do

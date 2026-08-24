@@ -8,7 +8,7 @@
 # Usage: scripts/codex_implement.sh -b <brief-file> [-v <verify-command>] [-r <max-fix-rounds>] [-s <session-id>]
 #   -b  implementation brief (initial run) or delta instruction (with -s)
 #   -v  narrowest verification command proving the change builds/passes, run
-#       with `sh -c`, e.g. './gradlew :app:feature:profile:compileKotlinWasmJs'
+#       with `sh -c`, e.g. './gradlew :<module>:<compile-task>'
 #       (select it from the project's validation profile,
 #       .claude/rules/project-validation.md). Runs on the host, NOT in the
 #       sandbox: in-sandbox Gradle was measured (2026-07-18) to need full

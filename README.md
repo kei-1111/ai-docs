@@ -56,10 +56,14 @@ A shared document must not name any other project-specific file, module, or conv
 The canonical copy lives here — never edit the files through a consumer's symlinks without
 pushing from the submodule. The flow is: commit and push in this repository (directly or via
 the submodule checkout), then in each consumer run `git submodule update --remote ai-docs/shared`
-and commit the pin bump. Consumers pin a commit, so an upstream change never applies silently.
+and commit the pin bump. When the update adds or removes skills, rules, or scripts, also re-run
+`ai-docs/shared/install.sh --claude [--codex]` — links are idempotent, and removed entries
+otherwise linger as dangling symlinks. Consumers pin a commit, so an upstream change never
+applies silently.
 
 Prerequisites for the `codex-*` skills and the `codex-implementer` agent: the `codex` CLI
-installed and authenticated. They fail fast with a clear error when it is missing.
+installed and authenticated. A missing CLI fails fast via an explicit preflight check; a
+missing or expired authentication surfaces as a normal runtime error instead.
 
 `scripts/check_structure.sh` (run by CI on every push and PR) verifies the structural
 invariants — SKILL.md presence and frontmatter, resolvable internal symlinks, and executable
