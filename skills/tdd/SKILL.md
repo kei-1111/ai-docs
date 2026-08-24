@@ -16,9 +16,9 @@ where it and a rule's constraints disagree, the rule wins.
 
 ## Preconditions
 
-- The change adds or modifies logic in a testable layer — the project's TDD rule defines the
-  exact set (this project: `.claude/rules/tdd.md`); business logic, data access, and
-  serialization are typical. Pure UI rendering has no test-first assertion — end-to-end tests
+- The change adds or modifies logic in a testable layer — the project's TDD rule
+  (`.claude/rules/tdd.md`, when the project defines one) states the exact set; business logic,
+  data access, and serialization are typical. Pure UI rendering has no test-first assertion — end-to-end tests
   and visual judgment cover it (the project's UI-testing rule, when one exists).
 - The test can actually be written first. In a layer whose suite does not exist yet, the
   first test introduces the suite itself per the TDD rule — that is not a blocker. If the test still cannot be written first (an untestable seam, missing

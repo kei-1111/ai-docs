@@ -8,7 +8,7 @@ set -u
 cd "$(git rev-parse --show-toplevel)" || exit 1
 [ $# -ge 1 ] || { echo 'usage: scripts/list_matching_rules.sh <repo-relative-file>...' >&2; exit 2; }
 if ! command -v python3 >/dev/null 2>&1 || ! python3 -c 'import yaml' >/dev/null 2>&1; then
-  echo 'ERROR: python3 with PyYAML is required (same dependency as check_ai_docs.sh)' >&2
+  echo 'ERROR: python3 with PyYAML is required' >&2
   exit 1
 fi
 

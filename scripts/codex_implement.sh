@@ -14,6 +14,8 @@
 #       sandbox: in-sandbox Gradle was measured (2026-07-18) to need full
 #       sandbox network access for its file-lock contention socket, which
 #       would drop the sandbox's network isolation.
+#       The gradlew-specific JAVA_HOME setup and dry-run preflight below are
+#       fast paths that no-op for non-Gradle verify commands.
 #   -r  max automatic fix rounds fed back via `codex exec resume` (default 2)
 #   -s  resume this Codex session instead of starting a fresh one (delta briefs)
 set -u -o pipefail

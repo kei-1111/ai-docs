@@ -44,10 +44,10 @@ question directly and pause the chain there.
    scheduling checks at each next opportunity) until every check is green and the branch is
    conflict-free, reporting follow-up results as they land. This watch covers CI and conflicts
    only; PR review comments always enter through `triage-pr-reviews`:
-   - CI failure: check it first. A known infra flake (`.claude/rules/ci-cd.md` — Known Flakes)
-     is rerun; a code-caused failure is investigated and reported with the failing output
+   - CI failure: check it first. A known infra flake (per the project CI rule, when one
+     exists) is rerun; a code-caused failure is investigated and reported with the failing output
    - Conflict with `main`: merge `main`, resolve, re-run the narrowest relevant validation
-     (plus `verify-app` when code changed), and push. A conflict needing more than a mechanical
+     (plus the project's app-verification skill, when one exists and code changed), and push. A conflict needing more than a mechanical
      merge — semantic choices between both sides — is escalated to the user
      (`.claude/rules/working-agreement.md` — While Editing, escalate when stuck)
 

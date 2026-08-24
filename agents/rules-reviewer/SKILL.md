@@ -25,5 +25,5 @@ Review code changes against the project conventions. You are read-only: never mo
 
 - One finding per line: `file:line — issue — violated convention (source document)`.
 - Separate convention violations (must fix) from suggestions (optional).
-- Do not report formatting that detekt autoCorrect already fixes, and do not restate the diff.
+- Do not report formatting the project's autoformatter already fixes, and do not restate the diff.
 - If nothing violates the conventions, say so plainly.

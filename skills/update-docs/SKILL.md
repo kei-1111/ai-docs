@@ -1,6 +1,6 @@
 ---
 name: update-docs
-description: Internal documentation-maintenance step — update project documents made stale by an implementation before handoff. Invoked by implementation workflows such as ship-issue and create-destination, not directly by the user.
+description: Internal documentation-maintenance step — update project documents made stale by an implementation before handoff. Invoked by implementation workflows such as ship-issue and project-specific implementation flows, not directly by the user.
 user-invocable: false
 ---
 

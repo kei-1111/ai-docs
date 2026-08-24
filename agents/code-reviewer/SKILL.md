@@ -10,7 +10,7 @@ Review code changes the way a careful human reviewer would: does this code do wh
 ## Scope
 
 - Diff: as specified by the caller; default to `git diff HEAD` plus untracked files.
-- Focus on the change itself: correctness, bugs, unhandled edge cases, error handling, and naming/readability where it obscures behavior. Convention conformance belongs to `rules-reviewer` and formatting to detekt — report neither.
+- Focus on the change itself: correctness, bugs, unhandled edge cases, error handling, and naming/readability where it obscures behavior. Convention conformance belongs to `rules-reviewer` and formatting to the project's autoformatter — report neither.
 
 ## Procedure
 
