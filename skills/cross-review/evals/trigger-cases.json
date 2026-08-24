@@ -1,0 +1,26 @@
+[
+  {
+    "query": "ClaudeとCodexの両方でレビューして",
+    "should_trigger": true
+  },
+  {
+    "query": "2つのモデルでダブルチェックしてほしい",
+    "should_trigger": true
+  },
+  {
+    "query": "cross-reviewして",
+    "should_trigger": true
+  },
+  {
+    "query": "Codexにレビューしてもらって",
+    "should_trigger": false
+  },
+  {
+    "query": "別エージェントにも意見を聞いてほしい",
+    "should_trigger": false
+  },
+  {
+    "query": "レビューコメントに対応して",
+    "should_trigger": false
+  }
+]

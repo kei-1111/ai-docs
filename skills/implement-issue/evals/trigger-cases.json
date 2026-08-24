@@ -1,0 +1,26 @@
+[
+  {
+    "query": "Issue #52を対応して",
+    "should_trigger": false
+  },
+  {
+    "query": "Issue #47の実装をお願い。PRはまだ作らないで",
+    "should_trigger": true
+  },
+  {
+    "query": "GitHub Issue 60番の内容をこのブランチに実装してほしい",
+    "should_trigger": false
+  },
+  {
+    "query": "Issue #52をPRまで対応して",
+    "should_trigger": false
+  },
+  {
+    "query": "Issue #52って何をするIssueなのか説明して",
+    "should_trigger": false
+  },
+  {
+    "query": "PR #52のレビューコメントに対応して",
+    "should_trigger": false
+  }
+]

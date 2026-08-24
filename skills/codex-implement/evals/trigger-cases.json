@@ -1,0 +1,30 @@
+[
+  {
+    "query": "Codexにこの変更を実装させて",
+    "should_trigger": true
+  },
+  {
+    "query": "Solに実装を任せて、Claudeはレビューして",
+    "should_trigger": true
+  },
+  {
+    "query": "この作業はCodexへオフロードして",
+    "should_trigger": true
+  },
+  {
+    "query": "Codexにレビューしてもらって",
+    "should_trigger": false
+  },
+  {
+    "query": "Codexの意見も聞いてみて",
+    "should_trigger": false
+  },
+  {
+    "query": "Issue #52をPRまで対応して",
+    "should_trigger": false
+  },
+  {
+    "query": "この修正を実装して",
+    "should_trigger": false
+  }
+]

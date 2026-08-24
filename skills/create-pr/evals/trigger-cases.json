@@ -1,0 +1,26 @@
+[
+  {
+    "query": "PRを作成してください",
+    "should_trigger": true
+  },
+  {
+    "query": "このブランチからプルリクを出して",
+    "should_trigger": true
+  },
+  {
+    "query": "コミット済みの変更でPRを開いて",
+    "should_trigger": true
+  },
+  {
+    "query": "Issue #52をPRまで対応して",
+    "should_trigger": false
+  },
+  {
+    "query": "PRのレビューコメントに対応して",
+    "should_trigger": false
+  },
+  {
+    "query": "Issueを起票してほしい",
+    "should_trigger": false
+  }
+]

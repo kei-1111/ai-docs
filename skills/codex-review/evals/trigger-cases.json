@@ -1,0 +1,26 @@
+[
+  {
+    "query": "Codexにレビューしてもらって",
+    "should_trigger": true
+  },
+  {
+    "query": "この差分をCodexでレビューして",
+    "should_trigger": true
+  },
+  {
+    "query": "セカンドレビュアーとしてCodexに見てもらいたい",
+    "should_trigger": true
+  },
+  {
+    "query": "ClaudeとCodexの両方でレビューして",
+    "should_trigger": false
+  },
+  {
+    "query": "Codexの意見も聞いてみて",
+    "should_trigger": false
+  },
+  {
+    "query": "このPRをレビューして",
+    "should_trigger": false
+  }
+]

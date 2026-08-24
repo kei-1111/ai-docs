@@ -1,0 +1,26 @@
+[
+  {
+    "query": "レビュー来てたので確認して対応して",
+    "should_trigger": true
+  },
+  {
+    "query": "PR #123のレビューコメントに対応してください",
+    "should_trigger": true
+  },
+  {
+    "query": "look at the reviews on my PR and fix them",
+    "should_trigger": true
+  },
+  {
+    "query": "このPRをレビューしてほしい",
+    "should_trigger": false
+  },
+  {
+    "query": "Issue #52のコメントに返信して",
+    "should_trigger": false
+  },
+  {
+    "query": "working treeの変更をレビューして",
+    "should_trigger": false
+  }
+]

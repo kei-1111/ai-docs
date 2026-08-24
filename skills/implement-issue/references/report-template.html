@@ -1,0 +1,168 @@
+<!--
+  Fixed report template for ship-issue step 5.
+  Fill the {{...}} slots only; sections marked "optional" may be deleted whole
+  when they do not apply. Never otherwise change the structure, and never touch
+  the CSS — it must stay identical to plan-template.html (one design family;
+  edit the two files together).
+  Section principle (Issue #93): the report carries only what opening the PR
+  does NOT give you — no changed-file list, validation results, review rounds,
+  docs-update details, or commit list. Deviations from the Issue belong in the
+  PR body's Summary, not here.
+-->
+<meta charset="utf-8">
+<title>{{TITLE}}</title>
+<style>
+  :root {
+    --bg: #fbfbfc;
+    --surface: #ffffff;
+    --ink: #1f2328;
+    --ink-2: #57606c;
+    --line: #e3e6ea;
+    --accent: #3574f0;
+    --accent-soft: #eaf1fe;
+    --warn: #b35c00;
+    --warn-soft: #fdf3e5;
+    --ok: #1a7f37;
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17191c; --surface: #1e2126; --ink: #dfe1e5; --ink-2: #9da4ad;
+      --line: #32363c; --accent: #6a9bfa; --accent-soft: #22304a;
+      --warn: #e8a13c; --warn-soft: #37301f; --ok: #57ab5a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17191c; --surface: #1e2126; --ink: #dfe1e5; --ink-2: #9da4ad;
+    --line: #32363c; --accent: #6a9bfa; --accent-soft: #22304a;
+    --warn: #e8a13c; --warn-soft: #37301f; --ok: #57ab5a;
+  }
+  :root[data-theme="light"] {
+    --bg: #fbfbfc; --surface: #ffffff; --ink: #1f2328; --ink-2: #57606c;
+    --line: #e3e6ea; --accent: #3574f0; --accent-soft: #eaf1fe;
+    --warn: #b35c00; --warn-soft: #fdf3e5; --ok: #1a7f37;
+  }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.75; margin: 0; padding: 2.5rem 1.25rem 5rem;
+  }
+  main { max-width: 46rem; margin: 0 auto; }
+  h1 { font-size: 1.55rem; line-height: 1.35; text-wrap: balance; margin: 0 0 .4rem; }
+  h2 {
+    font-size: 1.05rem; margin: 2.6rem 0 .9rem; padding-bottom: .4rem;
+    border-bottom: 1px solid var(--line);
+  }
+  h3 { font-size: .95rem; margin: 1.4rem 0 .5rem; }
+  p { margin: .6rem 0; }
+  .eyebrow {
+    font-size: .72rem; letter-spacing: .09em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600;
+  }
+  .lede { color: var(--ink-2); margin-top: .2rem; }
+  .meta { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.1rem 0 0; }
+  .chip {
+    font-size: .78rem; padding: .15rem .6rem; border-radius: 99px;
+    background: var(--accent-soft); color: var(--accent); font-weight: 600;
+  }
+  .chip.warn { background: var(--warn-soft); color: var(--warn); }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 8px; padding: 1rem 1.2rem; margin: .9rem 0;
+  }
+  .card h3 { margin-top: 0; }
+  .card .files { font-family: var(--mono); font-size: .78rem; color: var(--ink-2); margin-top: .6rem; }
+  code {
+    font-family: var(--mono); font-size: .84em;
+    background: var(--accent-soft); border-radius: 4px; padding: .08em .35em;
+  }
+  ul { padding-left: 1.3rem; margin: .5rem 0; }
+  li { margin: .3rem 0; }
+  .tablewrap { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: .88rem; }
+  th, td { text-align: left; padding: .45rem .7rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: .76rem; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-2); }
+  td.id { font-family: var(--mono); white-space: nowrap; }
+  .in { color: var(--ok); font-weight: 600; }
+  .ask { color: var(--warn); font-weight: 600; }
+  .out { color: var(--ink-2); }
+  .note {
+    border-left: 3px solid var(--warn); background: var(--warn-soft);
+    padding: .6rem .9rem; border-radius: 0 6px 6px 0; margin: 1rem 0; font-size: .92rem;
+  }
+  pre.mermaid {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 8px; padding: 1rem; overflow-x: auto;
+  }
+  .shots img { max-width: 100%; border: 1px solid var(--line); border-radius: 6px; }
+  .grid2 {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    gap: .9rem; margin: .9rem 0;
+  }
+  .grid2 .card { margin: 0; }
+</style>
+<main>
+  <!-- Issue number · branch · PR number -->
+  <p class="eyebrow">{{EYEBROW}}</p>
+  <h1>{{TITLE}}</h1>
+  <!-- 1–2 sentences: outcome first — what landed -->
+  <p class="lede">{{LEDE}}</p>
+  <!-- Chips: change kind only (e.g. docs-only) — size, file counts, and
+       validation results live in the PR. Use <span class="chip">...</span>;
+       class="chip warn" for anything unresolved. -->
+  <div class="meta">{{META_CHIPS}}</div>
+
+  <!-- What was changed and why: 2-3 sentences max -->
+  <h2>変更概要</h2>
+  {{OVERVIEW}}
+
+  <!-- Scannable, not prose: one .card per changed area inside a
+       <div class="grid2">. Each card = <h3> title, one-line summary <p>,
+       up to 4 one-line <li> bullets — at least one of them must state WHY
+       (the rationale), not just what — and target paths in <p class="files">.
+       Never write a paragraph longer than 2 sentences; anything with
+       structure belongs in the データフロー diagrams instead. -->
+  <h2>詳細</h2>
+  {{DETAIL}}
+
+  <!-- optional: notable decisions with their trade-offs, one <li> each:
+       決定 — 理由(却下: 代替案). Include whenever the change involved a real
+       fork in approach; this is exactly what the diff cannot show. -->
+  <h2>判断とトレードオフ</h2>
+  {{TRADEOFFS}}
+
+  <!-- optional: Large changes, or Medium changes altering structure (new
+       module, endpoint, cross-layer wiring). One or more <pre class="mermaid">
+       diagrams of only the flows the change touches — but only for flows with
+       branching, parallelism, or multiple actors; a single linear chain reads
+       faster as one prose line, so write it as text instead. Precede EVERY
+       diagram with an <h3> naming what it shows, even when there is only one.
+       The whole-system picture stays in docs/ArchitectureOverview.md. The
+       Artifact runtime renders mermaid natively; viewers opening the raw file
+       see the diagram source. -->
+  <h2>データフロー</h2>
+  {{DATA_FLOW}}
+
+  <!-- optional: UI changes only. Before/After table (same content as the PR
+       template's UI Changes table); images embedded as data: URIs inside
+       <div class="shots">. -->
+  <h2>Before / After</h2>
+  <div class="shots">{{SCREENSHOTS}}</div>
+
+  <!-- optional: 1-3 one-line bullets, each リスク — どう気づくか. Required when
+       the change alters agent-facing behavior with no CI signal (rules,
+       prompts, skills); delete for changes whose regressions CI would catch. -->
+  <h2>マージ後に見るべきリスク</h2>
+  <div class="note">{{RISKS}}</div>
+
+  <!-- Always: items found during the work but deliberately left out of scope —
+       separate-Issue candidates, known constraints. Only facts specific to
+       THIS change — no recurring mechanism boilerplate (e.g. artifact-privacy
+       notes, which live in the PR comment wording). State plainly when empty. -->
+  <h2>Follow-ups と既知の制約</h2>
+  {{FOLLOW_UPS}}
+
+  <!-- PR URL as a link -->
+  <h2>Pull Request</h2>
+  {{PR}}
+</main>

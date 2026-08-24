@@ -1,0 +1,30 @@
+[
+  {
+    "query": "Issue #52をPRまで対応して",
+    "should_trigger": true
+  },
+  {
+    "query": "Issue #47を最後まで対応して",
+    "should_trigger": true
+  },
+  {
+    "query": "Issue 60番、実装からPR作成までやって",
+    "should_trigger": true
+  },
+  {
+    "query": "Issue #52を対応して",
+    "should_trigger": true
+  },
+  {
+    "query": "今の変更からPRを作って",
+    "should_trigger": false
+  },
+  {
+    "query": "Issue #52の実装だけして。コミットやPRはまだいい",
+    "should_trigger": false
+  },
+  {
+    "query": "PR #123のレビューコメントに対応して",
+    "should_trigger": false
+  }
+]

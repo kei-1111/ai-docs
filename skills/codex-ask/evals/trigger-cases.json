@@ -1,0 +1,26 @@
+[
+  {
+    "query": "Codexの意見も聞いてみて",
+    "should_trigger": true
+  },
+  {
+    "query": "この設計、別の角度からも見てほしい",
+    "should_trigger": true
+  },
+  {
+    "query": "別エージェントにもこの命名でいいか聞いてほしい",
+    "should_trigger": true
+  },
+  {
+    "query": "Codexにレビューしてもらって",
+    "should_trigger": false
+  },
+  {
+    "query": "ClaudeとCodexの両方でレビューして",
+    "should_trigger": false
+  },
+  {
+    "query": "Codexに実装させて",
+    "should_trigger": false
+  }
+]
