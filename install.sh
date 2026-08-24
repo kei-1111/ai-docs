@@ -72,6 +72,7 @@ if [ -n "$do_claude" ]; then
     link ".claude/rules/$(basename "$rule")" "$shared_dir/rules/$(basename "$rule")"
   done
   for sc in "$shared_dir"/scripts/*.sh; do
+    case "$(basename "$sc")" in check_structure.sh) continue ;; esac
     link "scripts/$(basename "$sc")" "$shared_dir/scripts/$(basename "$sc")"
   done
 fi
