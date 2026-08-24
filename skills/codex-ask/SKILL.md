@@ -21,7 +21,7 @@ Build a self-contained prompt for Codex (`codex exec` opens a fresh session that
 - **What kind of input is wanted**: e.g. "are there pitfalls?", "would another approach be cleaner?", "review this diff"
 - **Constraints**: relevant project rules (`CLAUDE.md`, `.claude/rules/*`, `AGENTS.md`) when material to the question
 
-If Codex needs to read specific files, name them by path in the prompt (e.g. `app/feature/profile/.../ProfileScreen.kt`). Codex can read the workspace itself; do not paste large file contents into the prompt.
+If Codex needs to read specific files, name them by path in the prompt (e.g. `src/feature/.../SomeScreen.kt`). Codex can read the workspace itself; do not paste large file contents into the prompt.
 
 ### 2. Run codex exec
 
@@ -66,5 +66,5 @@ Wait for the user's decision. Do not modify code based on Codex's response witho
 | Argument | Example | Behavior |
 |----------|---------|----------|
 | Free-form question | `Is this MVI design OK?` | Forward verbatim to `codex exec` after composing background context |
-| Free-form with file references | `Look at ProfileScreen.kt in app/feature/profile and suggest improvements` | Codex reads the named files itself |
+| Free-form with file references | `Look at SomeScreen.kt in src/feature and suggest improvements` | Codex reads the named files itself |
 | (none) | — | Ask the user what they want Codex's opinion on |

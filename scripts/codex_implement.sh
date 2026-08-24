@@ -90,6 +90,11 @@ esac
 # The post-run comparison must isolate Sol's changes even on a dirty tree,
 # including edits inside pre-existing untracked files, so untracked contents
 # are copied in full rather than listed or hashed.
+# Submodule edits are invisible to the superproject snapshot below; refuse the
+# ambiguity instead of misattributing them.
+if [ -n "$(git submodule foreach --quiet 'git status --porcelain' 2>/dev/null)" ]; then
+  die 'a submodule worktree is dirty; commit and push it upstream (or clean it) before delegating'
+fi
 snap=$(mktemp -d "${TMPDIR:-/tmp}/codex-implement.XXXXXX") || die 'mktemp failed'
 git status --porcelain=v1 > "$snap/status-before.txt" || die 'snapshot failed: git status'
 git diff HEAD --binary > "$snap/diff-before.patch" || die 'snapshot failed: git diff'
