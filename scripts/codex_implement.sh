@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Delegation harness for the codex-implementer agent
-# (ai-docs/agents/codex-implementer/SKILL.md). Snapshots the working
+# (ai-docs/shared/agents/codex-implementer/SKILL.md). Snapshots the working
 # tree, streams the director's brief to `codex exec` (model pinned below), optionally
 # verifies the result and feeds failures back into the same Codex session, then
 # prints a delta report so the caller can attribute exactly what Sol changed.
