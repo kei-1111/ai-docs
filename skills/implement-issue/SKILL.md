@@ -13,8 +13,14 @@ Committing and the PR are separate steps (`create-commit` / `create-pr`).
 
 ## Branch precondition
 
-The user manages branches (`<type>/#<issue-number>`). Confirm the current branch matches the
-target Issue; on mismatch, stop and ask — never create branches or worktrees yourself.
+Work happens on the Issue's branch `<type>/#<issue-number>`, normally inside an Orca-managed
+worktree created by `ship-issue`'s dispatch step. On entry:
+
+- Current branch matches the target Issue: proceed.
+- Current branch is the Orca-sanitized form of it (e.g. `chore-123` for `chore/#123`): rename
+  to the canonical name (`git branch -m '<type>/#<N>'`) and proceed.
+- Anything else: stop and ask — never repurpose an unrelated branch or checkout, and never
+  create branches or worktrees from inside this step (dispatch owns that).
 
 ## Workflow
 

@@ -15,6 +15,21 @@ question directly and pause the chain there.
 
 ## Workflow
 
+0. **Dispatch (Orca-first)** — decide where the chain runs before starting it:
+   - Already on the target Issue's branch (canonical `<type>/#<N>` or its Orca-sanitized form
+     `<type>-<N>`): run the chain here.
+   - Otherwise, when the Orca CLI is available (`command -v orca`): hand the Issue to its own
+     Orca-managed worktree instead of implementing in place —
+     derive the workspaces root from an existing `orca worktree list --json` path, pre-trust
+     the predictable new path for the launched agent (Claude Code: set
+     `projects["<path>"].hasTrustDialogAccepted: true` in `~/.claude.json`), then
+     `orca worktree create --repo path:<repo-root> --name '<type>/#<N>' --issue <N>
+     --no-parent --agent claude --prompt "/ship-issue <N>" --json`, report the created
+     worktree and agent handle, and end — the dispatched agent runs this same skill inside
+     the worktree, and progress is monitored in the Orca app.
+   - Without Orca: fall back to `implement-issue`'s branch precondition (confirm the branch
+     with the user).
+
 1. **Implement** — run `implement-issue` with the given arguments (Issue number/URL, size
    override, `no-review`); its branch precondition, plan approval, validation, and full review
    loop all apply as written

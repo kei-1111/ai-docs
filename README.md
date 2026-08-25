@@ -51,6 +51,13 @@ consuming repository provides:
 
 A shared document must not name any other project-specific file, module, or convention.
 
+## Autonomous dispatch
+
+`ship-issue` is Orca-first: invoked outside the target Issue's branch on a host with the
+[Orca ADE](https://www.onorca.dev/) CLI, it dispatches the Issue into an Orca-managed worktree
+and launches the agent there, so execution is monitored in the Orca app. Hosts without Orca
+keep the in-place flow.
+
 ## Editing and updating
 
 The canonical copy lives here — never edit the files through a consumer's symlinks without
