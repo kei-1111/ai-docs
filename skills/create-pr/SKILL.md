@@ -34,6 +34,10 @@ Follow `.claude/rules/git-workflow.md` — Pull Requests (read it first):
    - Run `gh issue view` to fetch Issue information and reuse the Issue title as the PR title
    - Build the body from `.github/PULL_REQUEST_TEMPLATE.md` (canonical): reproduce its
      headings and follow its inline comments for which optional sections apply
+   - The body states results only — what the change is and its consequences for readers of
+     the repository. Never narrate the process that produced it (review rounds or loops,
+     delegation, fix iterations) and never add process sections such as "Review";
+     verification shows up solely as the template's checklist states
 
 4. **Create the pull request**
    - Show the user the proposed title and body, and proceed only after they approve
