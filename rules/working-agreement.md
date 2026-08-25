@@ -45,7 +45,8 @@ approach; project-specific invariants are stated in the project rules.
 
 ## Scope Of A Request
 
-- Filing an issue or asking for an opinion is not a signal to start implementing. After creating or amending an issue, stop with a completion report — no branch creation, no implementation reconnaissance — until the user explicitly asks. Consultative phrasing requests an opinion, not execution.
+- Filing an issue defaults to continuing into the dispatched autonomous flow (`ship-issue` — Dispatch): the work starts in its own dispatched worktree, never on the current checkout's branch. Stop after the completion report instead when the user asks to only record the issue, for backlog or checklist batches, or when no dispatch lane exists on this host.
+- Asking for an opinion is not a signal to start implementing; consultative phrasing requests an opinion, not execution.
 - A problem report or wish phrased as 「〜したい」 defaults to confirming whether to file an Issue, not to starting the implementation.
 - Do not commit, push, create an Issue, or open a PR unless the user asks for that action.
 

@@ -51,7 +51,11 @@ written beneath them.
    )"
    ```
 
-5. **Report and stop** — print the created issue URL and end there: filing an issue is not a signal to start implementing — no branch creation, no implementation reconnaissance — until the user explicitly asks (e.g. via `implement-issue` / `ship-issue`)
+5. **Hand off or stop** — print the created issue URL, then by default continue straight into
+   the autonomous flow: invoke `ship-issue <N>`, whose Dispatch step moves the work into its
+   own dispatched worktree — never the current checkout's branch. Stop with the report
+   instead when the user asked to only record the issue (記録だけ / "file it for later"),
+   for backlog or checklist batches, or when no dispatch lane exists on this host
 
 ## Notes
 
