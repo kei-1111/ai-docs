@@ -24,9 +24,13 @@ question directly and pause the chain there.
      the predictable new path for the launched agent (Claude Code: set
      `projects["<path>"].hasTrustDialogAccepted: true` in `~/.claude.json`), then
      `orca worktree create --repo path:<repo-root> --name '<type>/#<N>' --issue <N>
-     --no-parent --agent claude --prompt "/ship-issue <N>" --json`, report the created
-     worktree and agent handle, and end — the dispatched agent runs this same skill inside
-     the worktree, and progress is monitored in the Orca app.
+     --no-parent --agent claude --prompt "/ship-issue <N>" --json`. Then confirm delivery:
+     the initial `--prompt` can be lost when it lands before the TUI is ready, so wait with
+     `orca terminal wait --terminal <handle> --for tui-idle --timeout-ms 60000` and, if the
+     agent sits at an idle input without the task, re-send it via
+     `orca terminal send --terminal <handle> --text "/ship-issue <N>" --enter`. Report the
+     created worktree and agent handle, and end — the dispatched agent runs this same skill
+     inside the worktree, and progress is monitored in the Orca app.
    - Without Orca: fall back to `implement-issue`'s branch precondition (confirm the branch
      with the user).
 
