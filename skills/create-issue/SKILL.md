@@ -28,7 +28,11 @@ written beneath them.
 
 1. **Classify** — choose the matching template; confirm only when the type materially changes the task
 2. **Study conventions** — inspect recent Issues and read the matching template from the target branch
-3. **Compose** — write the title with the template prefix and the body under the template's `##` headings
+3. **Compose** — write the title with the template prefix and the body under the template's `##` headings:
+   - Keep the body concise: state the task and its acceptance shape, not the path that led to it
+   - When investigation preceded the filing, the main body carries only its conclusions; put
+     the investigation detail (evidence, measurements, file findings) in a collapsed
+     `<details><summary>Investigation</summary> … </details>` block at the end of the body
 4. **Create** — create the Issue without adding assignees, labels, milestones, or projects unless requested
 
    ```bash
