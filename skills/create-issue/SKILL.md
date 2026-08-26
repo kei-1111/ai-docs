@@ -53,9 +53,12 @@ written beneath them.
 
 5. **Hand off or stop** — print the created issue URL, then by default continue straight into
    the autonomous flow: invoke `ship-issue <N>`, whose Dispatch step moves the work into its
-   own dispatched worktree — never the current checkout's branch. Stop with the report
-   instead when the user asked to only record the issue (記録だけ / "file it for later"),
-   for backlog or checklist batches, or when no dispatch lane exists on this host
+   own dispatched worktree — never the current checkout's branch. When the request that led
+   here settled the issue but not the implementation, put that hand-off as a single pick-one
+   question (Claude Code: `AskUserQuestion`) instead of prose, so it costs one click to answer
+   — never ask again once the user has already asked for the implementation. Stop with the
+   report instead when the user asked to only record the issue (記録だけ / "file it for
+   later"), for backlog or checklist batches, or when no dispatch lane exists on this host
 
 ## Notes
 
