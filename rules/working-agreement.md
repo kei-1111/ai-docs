@@ -48,6 +48,7 @@ approach; project-specific invariants are stated in the project rules.
 - Filing an issue defaults to continuing into the dispatched autonomous flow (`ship-issue` — Dispatch): the work starts in its own dispatched worktree, never on the current checkout's branch. Stop after the completion report instead when the user asks to only record the issue, for backlog or checklist batches, or when no dispatch lane exists on this host.
 - Asking for an opinion is not a signal to start implementing; consultative phrasing requests an opinion, not execution.
 - A problem report or wish phrased as 「〜したい」 defaults to confirming whether to file an Issue, not to starting the implementation.
+- A consultation ends when the user settles the question it was about: that answer is the go-ahead. Continue from it into filing the Issue and the dispatched flow instead of asking for a separate confirmation on top of a decision already made.
 - Do not commit, push, create an Issue, or open a PR unless the user asks for that action.
 
 ## Build And Validation
