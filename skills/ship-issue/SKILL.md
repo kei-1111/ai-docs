@@ -22,9 +22,6 @@ question directly and pause the chain there.
      survive into commits or the PR.
    - Otherwise, when the Orca CLI is available (`command -v orca`): hand the Issue to its own
      Orca-managed worktree instead of implementing in place —
-     derive the workspaces root from an existing `orca worktree list --json` path, pre-trust
-     the predictable new path for the launched agent (Claude Code: set
-     `projects["<path>"].hasTrustDialogAccepted: true` in `~/.claude.json`), then
      `orca worktree create --repo path:<repo-root> --name '<type>/#<N>' --issue <N>
      --no-parent --agent claude --prompt "/ship-issue <N>" --json`. Capture the worktree
      `path` and `agentTerminalHandle` from the create response itself — do not re-derive them
