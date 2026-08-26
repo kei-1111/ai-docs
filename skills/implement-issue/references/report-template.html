@@ -146,10 +146,12 @@
   <!-- Required whenever the change alters what the UI looks like, and deletable
        whole only when it has no visual surface: an agent cannot attach images to
        a PR, so this report is the only place the change is actually visible.
-       Both sides as images embedded as data: URIs inside <div class="shots">,
-       each labelled with the side it shows — one comparison image the project's
-       screenshot tooling already produces counts as both. Never describe the
-       visual change in prose in place of the images. -->
+       Before and After as two separate full-width images inside
+       <div class="shots">, each labelled with the side it shows and embedded as
+       a data: URI. Never substitute the side-by-side comparison strip screenshot
+       tooling emits — it shrinks both sides until the larger the change, the
+       less readable they get — and never describe the visual change in prose in
+       place of the images. -->
   <h2>Before / After</h2>
   <div class="shots">{{SCREENSHOTS}}</div>
 
