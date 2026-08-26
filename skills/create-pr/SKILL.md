@@ -40,7 +40,7 @@ Follow `.claude/rules/git-workflow.md` — Pull Requests (read it first):
      verification shows up solely as the template's checklist states
 
 4. **Create the pull request**
-   - Show the user the proposed title and body, and proceed only after they approve
+   - Print the proposed title and body, then continue straight into creating the PR
    - Run `git push -u origin <branch-name>` if needed
    - Create the PR with `gh pr create`
    - Print the URL of the created PR

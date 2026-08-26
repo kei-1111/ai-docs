@@ -29,11 +29,12 @@ worktree created by `ship-issue`'s dispatch step. On entry:
    read the nearest analogous implementation
 3. **Read conventions** — the applicable `.claude/rules/*.md` (via `scripts/list_matching_rules.sh`) and the docs applicable to the touched areas
 4. **Plan** — settle target files, approach, validation, and the change size (see below) before
-   editing, then present the plan (asking where unsure): a short prose summary for Small/Medium;
+   editing, then present the plan and continue straight from it, still asking where the Issue
+   leaves something genuinely unsettled: a short prose summary for Small/Medium;
    for a Large change, an HTML page rendered from
    `references/plan-template.html` per that template's own header contract (Claude Code:
    publish it as an Artifact; a product without artifact publishing writes the HTML file and
-   reports its path) — and wait for the user's approval
+   reports its path)
 5. **Implement** — delegate execution to the product's default implementation lane with the
    concrete plan (contract: `ai-docs/shared/agents/implementer/SKILL.md`; when the project's `CLAUDE.md`
    defines model routing — e.g. a delegated Codex lane — follow it, judgment-heavy

@@ -8,10 +8,11 @@ description: Take a GitHub Issue all the way to an opened pull request — imple
 ## Task overview
 
 Thin orchestrator chaining `implement-issue` → `update-docs` → `create-commit` → `create-pr` and
-folding each inner skill's report into one final report. This skill owns only the ordering and the
-confirmation points between steps — it never reimplements an inner skill's logic. When an inner
-skill needs a decision (plan approval, commit approval, PR body confirmation), surface that
-question directly and pause the chain there.
+folding each inner skill's report into one final report. This skill owns only the ordering between
+steps — it never reimplements an inner skill's logic. The chain runs through to the opened PR
+without stopping for sign-off, because the PR is where the finished work is read. Pause only for a
+decision no default can settle — a judgment call the review loop surfaces — and put that question
+to the user directly.
 
 ## Workflow
 
@@ -39,13 +40,14 @@ question directly and pause the chain there.
      with the user).
 
 1. **Implement** — run `implement-issue` with the given arguments (Issue number/URL, size
-   override, `no-review`); its branch precondition, plan approval, validation, and full review
+   override, `no-review`); its branch precondition, plan, validation, and full review
    loop all apply as written
 2. **Update docs** — run `update-docs` over the resulting change
-3. **Commit** — present the final diff and get the user's confirmation; stop and ask if
-   unrelated staged changes already exist. Then per logical unit: stage only that unit's files,
+3. **Commit** — commit the reviewed work as it stands; stop and ask only when unrelated staged
+   changes already exist. Per logical unit: stage only that unit's files,
    confirm `git diff --staged` matches the reviewed diff, and run `create-commit` — repeat until
-   everything reviewed is committed
+   everything reviewed is committed. Splitting into self-contained, cherry-pickable units now
+   carries the weight the removed sign-off used to
 4. **Create PR** — run `create-pr`; any deviation from the Issue goes into the PR body's
    Summary — reviewers need it there, not in the report
 5. **Report** — one consolidated report, in three parts:

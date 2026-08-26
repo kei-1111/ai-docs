@@ -21,4 +21,4 @@ work from memory.
 3. Run `scripts/list_added_comments.sh` (a language-aware candidate scan) to surface comment lines the staged diff adds, and pass each through `.claude/rules/working-agreement.md` — Comments: keep only an individually justifiable constraint the code cannot express; delete the rest, re-stage, and re-run the script before continuing
 4. Run `git log --oneline -5` to see the recent commit style
 5. Generate a message that follows the convention
-6. After confirming with the user, run `git commit`
+6. Run `git commit`
