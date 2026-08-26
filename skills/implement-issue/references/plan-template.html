@@ -4,6 +4,10 @@
   when they do not apply. Never otherwise change the structure, and never touch
   the CSS — it must stay identical to report-template.html (one design family;
   edit the two files together).
+  Reader model: someone who knows this codebase but not this plan, reading to
+  catch a wrong turn rather than to approve it — the chain no longer waits for
+  sign-off. Show the shape of the change first, then the least prose that makes
+  the picture make sense.
 -->
 <meta charset="utf-8">
 <title>{{TITLE}}</title>
@@ -113,6 +117,18 @@
        for decision rationale. -->
   <h2>スコープ</h2>
   <div class="tablewrap">{{SCOPE_TABLE}}</div>
+
+  <!-- Required whenever the change moves data or control differently than
+       before — new module, endpoint, cross-layer wiring — and deletable whole
+       only when it does not. One or more <pre class="mermaid"> diagrams of the
+       flows the change touches, each preceded by an <h3> naming what it shows;
+       only for flows with branching, parallelism, or multiple actors, since a
+       single linear chain reads faster as one prose line. The whole-system
+       picture stays in the project's architecture document, when one exists.
+       The Artifact runtime renders mermaid natively; viewers opening the raw
+       file see the diagram source. -->
+  <h2>変更の全体像</h2>
+  {{SHAPE}}
 
   <!-- One .card per work package: <h3> name, <ul> concrete edits,
        <p class="files"> target file paths -->

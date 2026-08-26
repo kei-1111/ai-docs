@@ -4,6 +4,10 @@
   when they do not apply. Never otherwise change the structure, and never touch
   the CSS — it must stay identical to plan-template.html (one design family;
   edit the two files together).
+  Reader model: someone who knows this codebase but has not read one line of
+  this change and is not going to open the diff. This page is where the change
+  becomes understandable, so show it — a picture of what moved, then the least
+  prose that makes the picture make sense. Never assume the reader saw the code.
   Section principle: the report carries only what opening the PR
   does NOT give you — no changed-file list, validation results, review rounds,
   docs-update details, or commit list. Deviations from the Issue belong in the
@@ -131,8 +135,10 @@
   <h2>判断とトレードオフ</h2>
   {{TRADEOFFS}}
 
-  <!-- optional: Large changes, or Medium changes altering structure (new
-       module, endpoint, cross-layer wiring). One or more <pre class="mermaid">
+  <!-- Required whenever the change moves data or control differently than
+       before — new module, endpoint, cross-layer wiring — and deletable whole
+       only when it does not. A reader who will not open the diff learns the
+       shape of the change here or nowhere. One or more <pre class="mermaid">
        diagrams of only the flows the change touches — but only for flows with
        branching, parallelism, or multiple actors; a single linear chain reads
        faster as one prose line, so write it as text instead. Precede EVERY
