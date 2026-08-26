@@ -56,8 +56,14 @@ to the user directly.
      commits created, and the PR URL
    - HTML: render from `references/report-template.html` (shared with `implement-issue`; its
      fixed sections carry only what opening the PR does not give), filled per the template's
-     own header contract, and share it (Claude Code: publish it as an Artifact; a product
-     without artifact publishing writes the HTML file and reports its path)
+     own header contract. Before sharing it, hand the rendered file — and nothing else — to
+     one subagent carrying none of this session's context, told to read only that file and
+     report what it could not follow, which claims it had to take on faith, and which
+     statements contradict each other when combined. Fix what it names, then share (Claude
+     Code: publish it as an Artifact; a product without artifact publishing writes the HTML
+     file and reports its path). The template's rules are what the writer aims at; someone
+     with no memory of writing the page is the only check on whether they were hit, and the
+     only reader who can catch two rule-abiding sentences that cannot both be true
    - Attach: a one-line `gh pr comment` on the PR from step 4 with exactly this text:
      `Execution report for this batch (session artifact, private by default — share from the
      page menu if needed): <report URL>` — only when no published URL exists, carry the
