@@ -8,6 +8,10 @@
   this change and is not going to open the diff. This page is where the change
   becomes understandable, so show it — a picture of what moved, then the least
   prose that makes the picture make sense. Never assume the reader saw the code.
+  They know the stack, so never explain its vocabulary — Compose, Flow, DI,
+  coroutines and the like stay unglossed. They have never seen the names this
+  change touches, so every type, class, or module belonging to this repository
+  gets a few words saying what it is the first time it appears.
   Section principle: the report carries only what opening the PR
   does NOT give you — no changed-file list, validation results, review rounds,
   docs-update details, or commit list. Deviations from the Issue belong in the
@@ -124,6 +128,9 @@
        <div class="grid2">. Each card = <h3> title, one-line summary <p>,
        up to 4 one-line <li> bullets — at least one of them must state WHY
        (the rationale), not just what — and target paths in <p class="files">.
+       Say what a thing was before saying what it became: "the argument became X"
+       is unreadable without the argument it replaced. Name what was added or
+       deleted — a count ("three use cases") is not a name.
        Never write a paragraph longer than 2 sentences; anything with
        structure belongs in the データフロー diagrams instead. -->
   <h2>詳細</h2>
@@ -141,7 +148,13 @@
        shape of the change here or nowhere. One or more <pre class="mermaid">
        diagrams of only the flows the change touches — but only for flows with
        branching, parallelism, or multiple actors; a single linear chain reads
-       faster as one prose line, so write it as text instead. Precede EVERY
+       faster as one prose line, so write it as text instead. Label every node
+       with what it does and not only its class name, and every edge with the
+       relationship it carries (reads, emits, subscribes) — a bare arrow between
+       two identifiers tells a reader who has not seen the code nothing. A name
+       the prose sections lean on must appear in a diagram too; one that lives in
+       only one of the two leaves the reader unable to connect them.
+       Precede EVERY
        diagram with an <h3> naming what it shows, even when there is only one.
        The whole-system picture stays in the project's architecture document, when one exists. The
        Artifact runtime renders mermaid natively; viewers opening the raw file
@@ -163,7 +176,9 @@
 
   <!-- optional: 1-3 one-line bullets, each リスク — どう気づくか. Required when
        the change alters agent-facing behavior with no CI signal (rules,
-       prompts, skills); delete for changes whose regressions CI would catch. -->
+       prompts, skills); delete for changes whose regressions CI would catch.
+       Only risks THIS change introduces — a fix that landed elsewhere reads as
+       unrelated and makes the reader doubt what the change actually covers. -->
   <h2>マージ後に見るべきリスク</h2>
   <div class="note">{{RISKS}}</div>
 
