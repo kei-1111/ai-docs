@@ -10,8 +10,13 @@
   prose that makes the picture make sense. Never assume the reader saw the code.
   They know the stack, so never explain its vocabulary — Compose, Flow, DI,
   coroutines and the like stay unglossed. They have never seen the names this
-  change touches, so every type, class, or module belonging to this repository
-  gets a few words saying what it is the first time it appears.
+  change touches, so every type, class, module, or product concept this
+  repository owns gets a few words saying what it is the first time it appears —
+  the domain concept the change revolves around is the one most easily forgotten,
+  precisely because everyone close to the work stopped noticing it years ago.
+  A causal claim — "because X", "since Y", "元々効いていない" — carries the
+  condition and the outcome that make it checkable, or it does not get written:
+  a bare reason the reader cannot verify is an assertion taken on faith.
   Section principle: the report carries only what opening the PR
   does NOT give you — no changed-file list, validation results, review rounds,
   docs-update details, or commit list. Deviations from the Issue belong in the
@@ -130,7 +135,10 @@
        (the rationale), not just what — and target paths in <p class="files">.
        Say what a thing was before saying what it became: "the argument became X"
        is unreadable without the argument it replaced. Name what was added or
-       deleted — a count ("three use cases") is not a name.
+       deleted — a count ("three use cases") is not a name. Say whether behaviour
+       described is newly introduced or pre-existing and kept: the reader cannot
+       tell those apart without the code, and which one it is decides whether it
+       needs checking.
        Never write a paragraph longer than 2 sentences; anything with
        structure belongs in the データフロー diagrams instead. -->
   <h2>詳細</h2>
@@ -185,7 +193,10 @@
   <!-- Always: items found during the work but deliberately left out of scope —
        separate-Issue candidates, known constraints. Only facts specific to
        THIS change — no recurring mechanism boilerplate (e.g. artifact-privacy
-       notes, which live in the PR comment wording). State plainly when empty. -->
+       notes, which live in the PR comment wording). This is scope deliberately
+       left undone, a different thing from the risks above — "none" written
+       directly under a list of risks reads as a contradiction unless that
+       boundary is visible. State plainly when empty. -->
   <h2>Follow-ups と既知の制約</h2>
   {{FOLLOW_UPS}}
 
