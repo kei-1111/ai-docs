@@ -7,7 +7,10 @@
   Reader model: someone who knows this codebase but not this plan, reading to
   catch a wrong turn rather than to approve it — the chain no longer waits for
   sign-off. Show the shape of the change first, then the least prose that makes
-  the picture make sense.
+  the picture make sense. They know the stack, so never explain its vocabulary;
+  they have not seen the names this change will touch, so every type, class,
+  module, or product concept this repository owns gets a few words saying what
+  it is the first time it appears.
 -->
 <meta charset="utf-8">
 <title>{{TITLE}}</title>
@@ -132,17 +135,25 @@
   <h2>スコープ</h2>
   <div class="tablewrap">{{SCOPE_TABLE}}</div>
 
-  <!-- Required whenever the change moves data or control differently than
-       before — new module, endpoint, cross-layer wiring — and deletable whole
-       only when it does not. One or more <pre class="mermaid"> diagrams of the
-       flows the change touches, each preceded by an <h3> naming what it shows;
-       only for flows with branching, parallelism, or multiple actors, since a
-       single linear chain reads faster as one prose line. The whole-system
-       picture stays in the project's architecture document, when one exists.
-       The Artifact runtime renders mermaid natively; viewers opening the raw
-       file see the diagram source. -->
-  <h2>変更の全体像</h2>
-  {{SHAPE}}
+  <!-- The plan's spine: what this change does to the system, as a short chain of
+       figures. One step per <section> inside <div class="walk">, each an <h3>
+       naming the step, a <figure> holding the drawing in <div class="frame">
+       with a ONE-SENTENCE <figcaption>. One to three steps — the usual pair is
+       今こうなっている / こう変える, which is the shape a reader checks a plan
+       against. Deletable whole when the change moves nothing differently than
+       before: a rename, a docs edit, a test-only change.
+       <pre class="mermaid"> is the default here. The plan is written before the
+       code exists, so precision that will not survive contact with the work is
+       wasted; reach for inline <svg> only where the point is a mechanism a flow
+       chart cannot hold — two candidate approaches side by side with the edge
+       each one adds or removes, so the reader can point at what is being chosen
+       between. Either way label every edge, and label a node with what the thing
+       does rather than only its class name. Paired before/after drawings hold
+       the same granularity. The whole-system picture stays in the project's
+       architecture document, when one exists. The Artifact runtime renders
+       mermaid natively; viewers opening the raw file see the diagram source. -->
+  <h2>しくみ</h2>
+  <div class="walk">{{WALKTHROUGH}}</div>
 
   <!-- One .card per work package: <h3> name, <ul> concrete edits,
        <p class="files"> target file paths -->
