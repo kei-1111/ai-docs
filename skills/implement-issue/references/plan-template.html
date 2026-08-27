@@ -100,6 +100,20 @@
     gap: .9rem; margin: .9rem 0;
   }
   .grid2 .card { margin: 0; }
+  .walk { display: flex; flex-direction: column; gap: 2.4rem; margin: 1.2rem 0; }
+  .walk > section { display: flex; flex-direction: column; gap: .6rem; }
+  .walk h3 { margin: 0; }
+  .walk .no {
+    display: block; font-family: var(--mono); font-size: .72rem;
+    letter-spacing: .1em; color: var(--accent); font-weight: 600;
+  }
+  figure { margin: 0; display: flex; flex-direction: column; gap: .7rem; }
+  .frame {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 8px; padding: 1.2rem 1rem; overflow-x: auto;
+  }
+  .frame svg { display: block; width: 100%; height: auto; }
+  figcaption { font-size: .92rem; color: var(--ink-2); line-height: 1.7; }
 </style>
 <main>
   <!-- Issue number · branch · change-size classification -->

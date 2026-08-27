@@ -113,6 +113,20 @@
     gap: .9rem; margin: .9rem 0;
   }
   .grid2 .card { margin: 0; }
+  .walk { display: flex; flex-direction: column; gap: 2.4rem; margin: 1.2rem 0; }
+  .walk > section { display: flex; flex-direction: column; gap: .6rem; }
+  .walk h3 { margin: 0; }
+  .walk .no {
+    display: block; font-family: var(--mono); font-size: .72rem;
+    letter-spacing: .1em; color: var(--accent); font-weight: 600;
+  }
+  figure { margin: 0; display: flex; flex-direction: column; gap: .7rem; }
+  .frame {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 8px; padding: 1.2rem 1rem; overflow-x: auto;
+  }
+  .frame svg { display: block; width: 100%; height: auto; }
+  figcaption { font-size: .92rem; color: var(--ink-2); line-height: 1.7; }
 </style>
 <main>
   <!-- Issue number · branch · PR number -->
@@ -129,49 +143,49 @@
   <h2>変更概要</h2>
   {{OVERVIEW}}
 
-  <!-- Scannable, not prose: one .card per changed area inside a
-       <div class="grid2">. Each card = <h3> title, one-line summary <p>,
-       up to 4 one-line <li> bullets — at least one of them must state WHY
-       (the rationale), not just what — and target paths in <p class="files">.
-       Say what a thing was before saying what it became: "the argument became X"
-       is unreadable without the argument it replaced. Name what was added or
-       deleted — a count ("three use cases") is not a name. Say whether behaviour
-       described is newly introduced or pre-existing and kept: the reader cannot
-       tell those apart without the code, and which one it is decides whether it
-       needs checking.
-       Never write a paragraph longer than 2 sentences; anything with
-       structure belongs in the データフロー diagrams instead. -->
-  <h2>詳細</h2>
-  {{DETAIL}}
+  <!-- The spine of the report: the change told as a chain of figures, because a
+       reader who will not open the diff learns the shape of it here or nowhere.
+       One step per <section> inside <div class="walk">, each an <h3> naming the
+       step, a <figure> holding the drawing in <div class="frame"> with a
+       ONE-SENTENCE <figcaption>, and target paths in <p class="files"> where the
+       step touches specific files. If a step needs a paragraph under it, the
+       drawing is not carrying enough yet.
+       Order the steps as the chain the reader has to walk — what the thing is,
+       what went wrong, why it went wrong, what was done, what fell out of it —
+       skipping any that this change does not have. Number them with
+       <span class="no"> only when the order genuinely is a sequence, never as
+       decoration. Most changes land in three to six steps; a step that exists to
+       be thorough rather than because the chain breaks without it is noise.
+       Draw with inline <svg> when the point is a mechanism — a boundary crossed,
+       two options compared, a hop added or removed: viewBox sized to the content,
+       currentColor for strokes and text so both themes work, a literal hue only
+       on what carries meaning, every edge labelled, role="img" plus an aria-label
+       stating the same claim. Reach for <pre class="mermaid"> when the point is a
+       plain flow (the Artifact runtime renders it natively; raw-file viewers see
+       the source). Node labels say what a thing does, not only its class name.
+       Paired before/after drawings hold the same granularity — a type name on one
+       side answered by a vague phrase on the other hides the very change the pair
+       exists to show. The whole-system picture stays in the project's
+       architecture document, when one exists.
+       Whatever a step says in words: state what a thing was before what it
+       became, name what was added or deleted (a count like "three use cases" is
+       not a name), and say whether the behaviour is newly introduced or
+       pre-existing and kept — the reader cannot tell those apart without the
+       code, and which one it is decides whether it needs checking. A name the
+       figures lean on gets explained in a caption; a name the captions lean on
+       appears in a figure. -->
+  <h2>しくみ</h2>
+  <div class="walk">{{WALKTHROUGH}}</div>
 
   <!-- optional: notable decisions with their trade-offs, one <li> each:
        決定 — 理由(却下: 代替案). Include whenever the change involved a real
-       fork in approach; this is exactly what the diff cannot show. -->
+       fork in approach; this is exactly what the diff cannot show. A fork that
+       can be drawn — the two options side by side, with the edge each one adds
+       or removes — belongs in しくみ as a step instead, where the reader can
+       point at what was chosen between; leave here the ones that only words can
+       carry. -->
   <h2>判断とトレードオフ</h2>
   {{TRADEOFFS}}
-
-  <!-- Required whenever the change moves data or control differently than
-       before — new module, endpoint, cross-layer wiring — and deletable whole
-       only when it does not. A reader who will not open the diff learns the
-       shape of the change here or nowhere. One or more <pre class="mermaid">
-       diagrams of only the flows the change touches — but only for flows with
-       branching, parallelism, or multiple actors; a single linear chain reads
-       faster as one prose line, so write it as text instead. Label every node
-       with what it does and not only its class name, and every edge with the
-       relationship it carries (reads, emits, subscribes) — a bare arrow between
-       two identifiers tells a reader who has not seen the code nothing. A name
-       the prose sections lean on must appear in a diagram too; one that lives in
-       only one of the two leaves the reader unable to connect them. When a
-       before diagram is paired with an after one, keep both at the same
-       granularity: a type name on one side answered by a vague phrase on the
-       other hides the very change the pair exists to show.
-       Precede EVERY
-       diagram with an <h3> naming what it shows, even when there is only one.
-       The whole-system picture stays in the project's architecture document, when one exists. The
-       Artifact runtime renders mermaid natively; viewers opening the raw file
-       see the diagram source. -->
-  <h2>データフロー</h2>
-  {{DATA_FLOW}}
 
   <!-- Required whenever the change alters what the UI looks like, and deletable
        whole only when it has no visual surface: an agent cannot attach images to
