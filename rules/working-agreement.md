@@ -30,7 +30,11 @@ approach; project-specific invariants are stated in the project rules.
 
 - Make the smallest coherent change that satisfies the request.
 - Follow existing module boundaries and naming before introducing a new abstraction.
+- Name types by their essential behavior, not incidental context such as where a value comes from.
+- When a container API knows a slot's type, pass it through generics instead of leaving is-checks or casts to callers.
+- Never bend a component's meaning to satisfy a rule's classification; when code and a rule disagree, revisit the rule's definition instead.
 - Keep refactors separate from behavior changes unless the refactor is required.
+- Before a large structural refactor — extracting shared layouts, introducing a new file-organization scheme — codify the file-split, naming, and visibility rules first, then implement or delegate against them.
 - Do not edit generated files or build output.
 - Keep documentation concise and proportional; prefer one clear instruction over repeated wording, exhaustive safeguards, or speculative edge cases.
 - Volatile facts that would need synchronized edits — commands, flags, versions, thresholds, module/task enumerations — have one canonical source, preferably the code or configuration itself; other documents point to it and add only why or when it matters. When pointing at a canonical, do not append a breakdown — a parenthetical example list is still an enumeration and drifts. Entrypoints may restate stable safety invariants, and checklists state completion outcomes, not implementation details.
