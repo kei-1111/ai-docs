@@ -33,7 +33,19 @@ written beneath them.
    - When investigation preceded the filing, the main body carries only its conclusions; put
      the investigation detail (evidence, measurements, file findings) in a collapsed
      `<details><summary>Investigation</summary> … </details>` block at the end of the body
-4. **Create** — create the Issue without adding assignees, labels, milestones, or projects unless requested
+4. **Verify the premises** — when the Issue's justification rests on prior investigation — a
+   root-cause analysis, a claim that something is missing or impossible, API or version
+   availability, a statement of current behavior — do not file on the investigator's word:
+   - Extract the load-bearing factual claims from the draft body.
+   - Launch a fresh read-only agent given the draft alone — no investigation context, so it
+     cannot inherit its assumptions — briefed to falsify each claim against primary evidence
+     (the code as of `origin/main`, artifact contents, command output — never articles or
+     recollection) and to return a verdict per claim with the evidence cited.
+   - A refuted claim goes back to the user before anything is filed; a claim that could not be
+     verified either way stays in the body labeled as an assumption, not a fact.
+   Skip this step when the Issue has no investigative premise (typos, self-evident chores). For
+   high-impact Issues, escalate to the project's cross-model review lane when one exists.
+5. **Create** — create the Issue without adding assignees, labels, milestones, or projects unless requested
 
    ```bash
    gh issue create \
@@ -51,7 +63,7 @@ written beneath them.
    )"
    ```
 
-5. **Hand off or stop** — print the created issue URL, then by default continue straight into
+6. **Hand off or stop** — print the created issue URL, then by default continue straight into
    the autonomous flow: invoke `ship-issue <N>`, whose Dispatch step moves the work into its
    own dispatched worktree — never the current checkout's branch. When the request that led
    here settled the issue but not the implementation, put that hand-off as a single pick-one
