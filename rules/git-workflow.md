@@ -30,6 +30,7 @@ create-commit / create-issue / create-pr / triage-pr-reviews skills. Project-spe
 
 - Title: the corresponding Issue title verbatim; base branch is always `main`
 - Body follows `.github/PULL_REQUEST_TEMPLATE.md` (canonical — its inline comments state which optional sections apply)
+- Bodies state the result — what changed and its impact — never deliberation logs: alternatives that were weighed, review back-and-forth, or process narration
 - Keep PRs reviewable (up to ~500 lines) and don't repeat information already in the Issue or diff
 - Merge method: a merge commit — never switch to squash/rebase without an explicit user instruction
 
