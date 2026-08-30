@@ -37,6 +37,7 @@ approach; project-specific invariants are stated in the project rules.
 - Before a large structural refactor — extracting shared layouts, introducing a new file-organization scheme — codify the file-split, naming, and visibility rules first, then implement or delegate against them.
 - Do not edit generated files or build output.
 - Keep documentation concise and proportional; prefer one clear instruction over repeated wording, exhaustive safeguards, or speculative edge cases.
+- Document text states its norm and reads to someone with no prior context: never write a rule or doc line as a reaction to a superseded version or to the discussion that produced it.
 - Volatile facts that would need synchronized edits — commands, flags, versions, thresholds, module/task enumerations — have one canonical source, preferably the code or configuration itself; other documents point to it and add only why or when it matters. When pointing at a canonical, do not append a breakdown — a parenthetical example list is still an enumeration and drifts. Entrypoints may restate stable safety invariants, and checklists state completion outcomes, not implementation details.
 - Escalate when stuck: after a few failed attempts without a confirmed root cause, stop and consult the user instead of applying speculative fixes.
 - Share the plan with the user and get a go-ahead before adding a guardrail (a hook, a deny list, a defensive mechanism); never add one unannounced.
