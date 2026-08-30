@@ -39,7 +39,7 @@ approach; project-specific invariants are stated in the project rules.
 - Keep documentation concise and proportional; prefer one clear instruction over repeated wording, exhaustive safeguards, or speculative edge cases.
 - Volatile facts that would need synchronized edits — commands, flags, versions, thresholds, module/task enumerations — have one canonical source, preferably the code or configuration itself; other documents point to it and add only why or when it matters. When pointing at a canonical, do not append a breakdown — a parenthetical example list is still an enumeration and drifts. Entrypoints may restate stable safety invariants, and checklists state completion outcomes, not implementation details.
 - Escalate when stuck: after a few failed attempts without a confirmed root cause, stop and consult the user instead of applying speculative fixes.
-- Do not build speculative guardrails (hooks, deny lists, defensive mechanisms) for failures that have not actually occurred — propose and stop; build one only from a real failure, using that concrete case. Exception: when a change itself creates a new risk of a human forgetting a required step, ship the guardrail together with the change.
+- Guardrails (hooks, deny lists, defensive mechanisms) do not need to wait for a real failure — build them preventively. But always share the plan with the user and get a go-ahead before building one; never add one unannounced.
 
 ## Comments
 
