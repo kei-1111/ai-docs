@@ -61,7 +61,7 @@ These rules govern every written output — rules, skills, documents, Issue and 
 - Asking for an opinion is not a signal to start implementing; consultative phrasing requests an opinion, not execution.
 - A problem report or wish phrased as 「〜したい」 defaults to confirming whether to file an Issue, not to starting the implementation.
 - A consultation ends when the user settles the question it was about: that answer is the go-ahead. Continue from it into filing the Issue and the dispatched flow instead of asking for a separate confirmation on top of a decision already made.
-- Do not commit, push, create an Issue, or open a PR unless the user asks for that action.
+- Commit completed logical units without asking; push without asking too, batching pushes — each push triggers a CI run — rather than pushing every commit. Creating an Issue or opening a PR needs the user's ask, directly or through a flow they invoked.
 
 ## Build And Validation
 
