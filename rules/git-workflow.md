@@ -9,7 +9,6 @@ create-commit / create-issue / create-pr / triage-pr-reviews skills. Project-spe
 - [Conventional Commits v1.0.0](https://www.conventionalcommits.org/en/v1.0.0/), written entirely in English: `<type>: <description>` or `<type>(scope): <description>`
 - Types: feat, fix, docs, refactor, perf, test, build, ci, chore — which suites `test` covers and the observed scopes are project-specific (see the project git rules)
 - Description: imperative mood, one concise line, no trailing period
-- Breaking changes: `feat!:` or a `BREAKING CHANGE:` footer
 - Granularity: one self-contained logical change per commit, cherry-pickable without depending on later commits
 
 ## Branches
@@ -39,5 +38,3 @@ create-commit / create-issue / create-pr / triage-pr-reviews skills. Project-spe
 
 - Direct push to the `main` branch
 - Force push on shared branches
-- Massive file changes in a single PR
-- Meaningless commit messages

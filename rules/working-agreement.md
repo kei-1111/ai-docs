@@ -21,7 +21,6 @@ approach; project-specific invariants are stated in the project rules.
 
 ## Before Editing
 
-- Inspect the files being changed and their nearest analogous implementation.
 - Check `git status`; preserve user changes and avoid unrelated cleanup.
 - Verify referenced APIs, tasks, modules, and paths in the current checkout instead of relying on documentation alone.
 - For a non-trivial change, define verifiable success criteria first — the narrowest validation that must pass and, for user-visible UI changes, what to confirm in the running product — and validate against them before reporting completion.
@@ -75,17 +74,12 @@ These rules govern every written output — rules, skills, documents, Issue and 
 
 ## Before Handing Off
 
-- Review the final diff for accidental or unrelated changes.
 - Verify before asserting: check API existence and behavior against the resolved dependency version or official sources; confirm the running build actually contains the change before diagnosing from runtime observations; distinguish live data from fallbacks before declaring end-to-end success; separate observation from speculation when reporting.
 - When a skill step names the independent review lane, it maps to the `rules-reviewer` and `code-reviewer` agents run independently (Codex wrappers: `rules_reviewer` / `code_reviewer`); a cross-model reviewer exists only on Claude Code (the `codex-review` skill).
 - Run the narrowest relevant validation, expanding to broader checks for cross-module or release-impacting changes. Narrowest applies to validation commands only — review depth never scales down: the review loop runs until a round yields no actionable findings.
-- Report what changed, what was validated, and anything not validated.
 
 ## Safety And Maintenance
 
 - Never expose secrets, credentials, tokens, signing material, or machine-specific configuration.
 - Do not add heavy dependencies without approval.
-- Do not rewrite large areas, rename public APIs, or move code across modules unless the task requires it.
-- Never discard or overwrite unrelated working-tree changes.
-- When generated templates or docs disagree with current source code, the source wins (subject to Instruction Priority above).
 - Keep `AGENTS.md` and this file updated together when agent-level instructions change.
