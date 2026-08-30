@@ -46,8 +46,8 @@ to the user directly.
 3. **Commit** — commit the reviewed work as it stands; stop and ask only when unrelated staged
    changes already exist. Per logical unit: stage only that unit's files,
    confirm `git diff --staged` matches the reviewed diff, and run `create-commit` — repeat until
-   everything reviewed is committed. Splitting into self-contained, cherry-pickable units now
-   carries the weight the removed sign-off used to
+   everything reviewed is committed. With no sign-off pause in the chain, self-contained,
+   cherry-pickable units are what keep the work reviewable and reversible
 4. **Create PR** — run `create-pr`; any deviation from the Issue goes into the PR body's
    Summary — reviewers need it there, not in the report
 5. **Report** — one consolidated report, in three parts:
