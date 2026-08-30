@@ -20,6 +20,7 @@ create-commit / create-issue / create-pr / triage-pr-reviews skills. Project-spe
 ## Issues
 
 - Title in the same Conventional Commits format as commits (`<type>: <description>`, scope optional), the type being the chosen template's frontmatter prefix in `.github/ISSUE_TEMPLATE/`; title and body in English, mirroring that template's headings
+- Bodies state what to do and its outcome; a past change appears only as the current state to fix — never as what introduced it, what it did not cause, or the review that found the item
 - One responsibility per Issue; close when completed
 - Filing many findings at once (audits, review sweeps): batch them into per-kind checklist Issues — never one Issue per finding
 - One Issue maps to one PR — never split an Issue's items across PRs; when a change feels PR-splittable, split the Issue instead, and keep Issue bodies free of "separate PRs" phrasing
@@ -30,7 +31,7 @@ create-commit / create-issue / create-pr / triage-pr-reviews skills. Project-spe
 
 - Title: the corresponding Issue title verbatim; base branch is always `main`
 - Body follows `.github/PULL_REQUEST_TEMPLATE.md` (canonical — its inline comments state which optional sections apply)
-- Bodies state the result — what changed and its impact — never deliberation logs: alternatives that were weighed, review back-and-forth, or process narration
+- Bodies stay at overview level: one bullet per aspect of the change and its impact — never enumerate what the diff already shows (files, symbols, renames), never restate the linked Issue; name a symbol only when the impact statement needs it
 - Keep PRs reviewable (up to ~500 lines) and don't repeat information already in the Issue or diff
 - Merge method: a merge commit — never switch to squash/rebase without an explicit user instruction
 
