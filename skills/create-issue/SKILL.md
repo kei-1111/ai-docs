@@ -30,9 +30,10 @@ written beneath them.
 2. **Study conventions** — inspect recent Issues and read the matching template from the target branch
 3. **Compose** — write the title with the template prefix and the body under the template's `##` headings:
    - Keep the body concise: state the task and its acceptance shape, not the path that led to it
-   - When investigation preceded the filing, the main body carries only its conclusions; put
-     the investigation detail (evidence, measurements, file findings) in a collapsed
-     `<details><summary>Investigation</summary> … </details>` block at the end of the body
+   - When investigation preceded the filing, the main body carries only its conclusions; append
+     an `## Investigation` section at the end of the body so the recorded findings are visible,
+     with the detail (evidence, measurements, file findings) collapsed beneath the heading in a
+     `<details><summary>…</summary></details>` block
 4. **Verify the premises** — when the Issue's justification rests on prior investigation — a
    root-cause analysis, a claim that something is missing or impossible, API or version
    availability, a statement of current behavior — do not file on the investigator's word:
