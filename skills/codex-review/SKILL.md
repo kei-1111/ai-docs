@@ -38,7 +38,7 @@ workspace-write. `--dry-run` prints the composed prompt without calling Codex.
 
 ### 3. Verify before relaying
 
-Codex is an LLM reviewer — every finding is a hypothesis until verified (same discipline as `triage-pr-reviews`):
+Codex is an LLM reviewer — every finding is a hypothesis until verified:
 
 - Read the cited code; line numbers and quoted snippets can be stale or misread
 - Check whether a suggestion conflicts with `.claude/rules/*.md` or a pattern the project has deliberately established — a "fix" that undoes a sanctioned project decision is a rejection, not a finding
