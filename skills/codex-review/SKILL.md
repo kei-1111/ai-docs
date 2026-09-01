@@ -51,10 +51,6 @@ Codex is an LLM reviewer — every finding is a hypothesis until verified:
 - **自身の見解**: Codex が見落とした点や同意/不同意
 - **推奨アクション**: 修正する / しない / 別 Issue 化
 
-When the user invoked this skill directly, also publish the report as an HTML Artifact; as an
-inner step of another skill (e.g. a cross-review loop), skip it — the outermost report owns the
-HTML.
-
 Wait for the user's decision. Do not modify code based on the review without explicit approval.
 
 ## Notes
