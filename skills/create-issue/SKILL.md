@@ -29,7 +29,6 @@ written beneath them.
 1. **Classify** — choose the matching template; confirm only when the type materially changes the task
 2. **Study conventions** — inspect recent Issues and read the matching template from the target branch
 3. **Compose** — write the title with the template prefix and the body under the template's `##` headings:
-   - Keep the body concise: state the task and its acceptance shape, not the path that led to it
    - When investigation preceded the filing, the main body carries only its conclusions; append
      an `## Investigation` section at the end of the body so the recorded findings are visible,
      with the detail (evidence, measurements, file findings) collapsed beneath the heading in a
