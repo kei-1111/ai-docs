@@ -35,6 +35,10 @@ Follow `.claude/rules/git-workflow.md` — Pull Requests (read it first):
    - Build the body from `.github/PULL_REQUEST_TEMPLATE.md` (canonical): reproduce its
      headings and follow its inline comments for which optional sections apply
    - Verification shows up solely as the template's checklist states
+   - For a user-visible UI change, capture Before and After images of the affected screens by
+     driving the running product (the project's app-driving skill, when one exists) and attach
+     them with the repeatable `--attach` flag (`gh pr create --attach <image>`), labelling
+     which side each image shows
 
 4. **Create the pull request**
    - Print the proposed title and body, then continue straight into creating the PR
