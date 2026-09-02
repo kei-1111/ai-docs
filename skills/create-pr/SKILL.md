@@ -36,9 +36,9 @@ Follow `.claude/rules/git-workflow.md` — Pull Requests (read it first):
      headings and follow its inline comments for which optional sections apply
    - Verification shows up solely as the template's checklist states
    - For a user-visible UI change, capture Before and After images of the affected screens by
-     driving the running product (the project's app-driving skill, when one exists) and attach
-     them with the repeatable `--attach` flag (`gh pr create --attach <image>`), labelling
-     which side each image shows
+     driving the running product, reference the image files where the template places them, and
+     pass each to the repeatable `--attach` flag (`gh pr create --attach <image>`) — gh uploads
+     the files and rewrites the references in place
 
 4. **Create the pull request**
    - Print the proposed title and body, then continue straight into creating the PR
