@@ -6,7 +6,7 @@
 #
 # Flags (at least one required):
 #   --claude  link .claude/skills/<name>, .claude/rules/<core>.md, scripts/<sc>.sh
-#   --codex   link .codex/skills/<name> (Claude-only skills excluded)
+#   --codex   link .codex/skills/<name> for the skills Codex uses while implementing
 #
 # After installing, the consumer still provides by hand:
 #   - the fixed-name profile rules .claude/rules/project-validation.md and
@@ -19,7 +19,7 @@
 # recreated harmlessly.
 set -u
 
-CLAUDE_ONLY='codex-ask codex-implement codex-review cross-review'
+CODEX_SKILLS='tdd'
 
 die() { printf 'ERROR: %s\n' "$1" >&2; exit 1; }
 
@@ -65,9 +65,8 @@ for skill_dir in "$shared_dir"/skills/*/; do
   name=$(basename "$skill_dir")
   [ -n "$do_claude" ] && link ".claude/skills/$name" "$shared_dir/skills/$name"
   if [ -n "$do_codex" ]; then
-    case " $CLAUDE_ONLY " in
-      *" $name "*) ;;
-      *) link ".codex/skills/$name" "$shared_dir/skills/$name" ;;
+    case " $CODEX_SKILLS " in
+      *" $name "*) link ".codex/skills/$name" "$shared_dir/skills/$name" ;;
     esac
   fi
 done

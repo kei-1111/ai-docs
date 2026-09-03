@@ -26,8 +26,9 @@ git add -A && git commit
 
 Cloning a consumer then needs `git clone --recurse-submodules` (or `git submodule update --init`).
 
-`install.sh` creates per-skill symlinks (`.claude/skills/<name>`, `.codex/skills/<name>` —
-Claude-only skills are excluded from the Codex side), rule-core symlinks
+`install.sh` creates per-skill symlinks (`.claude/skills/<name>` for every skill;
+`.codex/skills/<name>` only for the skills Codex uses while implementing — Codex is reached as
+an implementer and reviewer, so flow-orchestrating skills stay Claude-side), rule-core symlinks
 (`.claude/rules/git-workflow.md`, `.claude/rules/working-agreement.md`), and script symlinks
 (`scripts/*.sh`). Project-specific assets live outside the submodule, canonically at
 `ai-docs/project/` in the consumer, with their own symlinks alongside the shared ones.
