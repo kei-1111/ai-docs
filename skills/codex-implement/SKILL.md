@@ -20,6 +20,7 @@ Delegate to Sol when the plan is settled enough that the spec determines the cod
    - Goal and target files, by path
    - Approach step by step, naming the analogous pattern to follow (by path)
    - Constraints, transferred mechanically rather than from recall (Codex auto-loads only `AGENTS.md`, not `.claude/rules/`): run `scripts/list_matching_rules.sh <planned target files>` to enumerate the applicable rules (always-loaded + `paths:`-matched), and inline each rule's applicable sections into the brief; end the brief with the list of rules it covers so the implementer can echo it back
+   - Any project skill the change should follow, named — not inlined: Codex discovers `.codex/skills/` at startup and loads a named skill itself
    - What NOT to touch
 3. **Delegate** — write the brief to a file (scratchpad or temp directory) and pass its path, plus
    the narrowest verification command selected from `.claude/rules/project-validation.md`, to the
