@@ -1,6 +1,6 @@
 ---
 name: ship-issue
-description: Take a GitHub Issue all the way to an opened pull request — implement, update docs, commit, and create the PR in one flow. The default entry point for handling an Issue (「対応して」, 「PRまで対応して」, 「最後まで対応して」, ship this Issue); only an explicitly PR-less implementation-only request falls to the internal implement-issue step instead.
+description: Take a GitHub Issue all the way to an opened pull request — implement, update docs, commit, and create the PR in one flow. The default entry point for handling an Issue (「対応して」, 「PRまで対応して」, 「最後まで対応して」, ship this Issue).
 ---
 
 # Ship issue
