@@ -16,28 +16,23 @@ to the user directly.
 
 ## Workflow
 
-0. **Dispatch (Orca-first)** — decide where the chain runs before starting it:
-   - Already on the target Issue's canonical branch `<type>/#<N>`: run the chain here. On its
-     Orca-sanitized form (`<type>-<N>`): rename to the canonical name first —
-     `git branch -m '<type>/#<N>'` — then run the chain here. The sanitized name must never
-     survive into commits or the PR.
-   - Otherwise, when the Orca CLI is available (`command -v orca`): hand the Issue to its own
-     Orca-managed worktree instead of implementing in place —
-     `orca worktree create --repo path:<repo-root> --name '<type>/#<N>' --issue <N>
-     --no-parent --agent claude --prompt "/ship-issue <N>" --json`. Capture the worktree
-     `path` and `agentTerminalHandle` from the create response itself — do not re-derive them
-     afterwards via `worktree list` / `terminal list`. The CLI has no branch flag and creates
-     the branch under the sanitized name, so immediately rename it to the canonical form:
-     `git -C <worktree-path> branch -m '<type>/#<N>'`. Then confirm delivery:
-     the initial `--prompt` can be lost when it lands before the TUI is ready, so wait with
-     `orca terminal wait --terminal <agentTerminalHandle> --for tui-idle --timeout-ms 60000`;
-     a timeout while the agent is already busy on the task is the normal case — re-send via
-     `orca terminal send --terminal <agentTerminalHandle> --text "/ship-issue <N>" --enter`
-     only when the agent sits at an idle input without the task. Report the
-     created worktree and agent handle, and end — the dispatched agent runs this same skill
-     inside the worktree, and progress is monitored in the Orca app.
-   - Without Orca: fall back to `implement-issue`'s branch precondition (confirm the branch
-     with the user).
+0. **Dispatch** — inside the Issue's dispatched worktree — on `<type>/#<N>`, or its
+   Orca-sanitized form (`<type>-<N>`) renamed first with `git branch -m '<type>/#<N>'` —
+   run the chain here; the sanitized name must never survive into commits or the PR.
+   Anywhere else, hand the Issue to its own Orca-managed worktree instead of implementing
+   in place — `orca worktree create --repo path:<repo-root> --name '<type>/#<N>' --issue <N>
+   --no-parent --agent claude --prompt "/ship-issue <N>" --json`. Capture the worktree
+   `path` and `agentTerminalHandle` from the create response itself — do not re-derive them
+   afterwards via `worktree list` / `terminal list`. The CLI has no branch flag and creates
+   the branch under the sanitized name, so immediately rename it to the canonical form:
+   `git -C <worktree-path> branch -m '<type>/#<N>'`. Then confirm delivery:
+   the initial `--prompt` can be lost when it lands before the TUI is ready, so wait with
+   `orca terminal wait --terminal <agentTerminalHandle> --for tui-idle --timeout-ms 60000`;
+   a timeout while the agent is already busy on the task is the normal case — re-send via
+   `orca terminal send --terminal <agentTerminalHandle> --text "/ship-issue <N>" --enter`
+   only when the agent sits at an idle input without the task. Report the
+   created worktree and agent handle, and end — the dispatched agent runs this same skill
+   inside the worktree, and progress is monitored in the Orca app.
 
 1. **Implement** — run `implement-issue` with the given arguments (Issue number/URL, size
    override, `no-review`); its branch precondition, plan, validation, and full review
