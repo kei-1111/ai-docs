@@ -38,10 +38,10 @@ created by `ship-issue`'s dispatch step.
    workflow instead of implementing first and testing after
 6. **Validate** — run every applicable row from `.claude/rules/project-validation.md`
 7. **Review** — the same loop at every change size, ending only when a round produces zero
-   actionable findings. Round 1 runs the independent review lane and, where the product has
+   actionable findings. Every round runs the independent review lane and, where the product has
    one, the cross-model reviewer in parallel on the same diff (lanes kept independent; a change
-   implemented through the Codex lane gets its cross-model check from the Claude lane); later
-   rounds re-run the independent lane alone. Per round: fix verified findings and re-validate,
+   implemented through the Codex lane gets its cross-model check from the Claude lane).
+   Per round: fix verified findings and re-validate,
    record rejected ones with their verification result, and put judgment calls to the user.
    When findings stop converging across rounds, stop and consult instead of looping further
 8. **Report** — as text: open with a prose overview of what was changed and why, then changed
