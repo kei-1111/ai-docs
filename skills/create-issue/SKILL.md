@@ -70,7 +70,7 @@ written beneath them.
    question (Claude Code: `AskUserQuestion`) instead of prose, so it costs one click to answer
    — never ask again once the user has already asked for the implementation. Stop with the
    report instead when the user asked to only record the issue (記録だけ / "file it for
-   later"), for backlog or checklist batches, or when no dispatch lane exists on this host
+   later") or for backlog or checklist batches
 
 ## Notes
 
