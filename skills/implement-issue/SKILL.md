@@ -1,6 +1,6 @@
 ---
 name: implement-issue
-description: Internal step of the ship-issue chain — implement a GitHub Issue on the current branch, from reading the issue to a validated working-tree change reviewed until no findings remain. Invoked by the agent from ship-issue; the user-facing entry point is ship-issue, and this skill fires directly only when the user explicitly asks for an implementation-only run with no PR.
+description: Internal step of the ship-issue chain — implement a GitHub Issue on the current branch, from reading the issue to a validated working-tree change reviewed until no findings remain. Invoked from ship-issue, never directly.
 user-invocable: false
 ---
 
@@ -13,14 +13,8 @@ Committing and the PR are separate steps (`create-commit` / `create-pr`).
 
 ## Branch precondition
 
-Work happens on the Issue's branch `<type>/#<issue-number>`, normally inside an Orca-managed
-worktree created by `ship-issue`'s dispatch step. On entry:
-
-- Current branch matches the target Issue: proceed.
-- Current branch is the Orca-sanitized form of it (e.g. `chore-123` for `chore/#123`): rename
-  to the canonical name (`git branch -m '<type>/#<N>'`) and proceed.
-- Anything else: stop and ask — never repurpose an unrelated branch or checkout, and never
-  create branches or worktrees from inside this step (dispatch owns that).
+Work happens on the Issue's branch `<type>/#<issue-number>`, inside the Orca-managed worktree
+created by `ship-issue`'s dispatch step.
 
 ## Workflow
 
@@ -43,22 +37,13 @@ worktree created by `ship-issue`'s dispatch step. On entry:
    modifies logic in a testable layer, run this step through the `tdd` skill's red-green-refactor
    workflow instead of implementing first and testing after
 6. **Validate** — run every applicable row from `.claude/rules/project-validation.md`
-7. **Review** — the same full loop at every change size, ending only when a round produces zero
-   actionable findings:
-   - Round 1 runs the independent review lane and, where the product has one, the cross-model
-     reviewer in parallel on the same diff (keep the lanes independent). When the change was
-     implemented through the Codex lane, the Claude-side independent lane is the cross-model
-     check — a Codex review of Codex-implemented code is a separate-session self-review, not an
-     independent one; weigh it accordingly. Later rounds re-run the independent review lane
-     alone to confirm the fixes.
-   - Per round: fix clear violations (rule violations, divergence from the Issue, bugs, added
-     comments the comment policy does not admit) immediately and re-validate; record rejected
-     findings with their verification result, quoting the relevant code excerpt; ask the user
-     before acting on judgment calls (design decisions, scope changes), presenting the options
-     as a structured question (Claude Code: AskUserQuestion; a product without it asks in
-     plain text).
-   - There is no fixed round cap — but when findings stop converging (repeating or oscillating
-     across rounds), stop and consult the user instead of looping further
+7. **Review** — the same loop at every change size, ending only when a round produces zero
+   actionable findings. Round 1 runs the independent review lane and, where the product has
+   one, the cross-model reviewer in parallel on the same diff (lanes kept independent; a change
+   implemented through the Codex lane gets its cross-model check from the Claude lane); later
+   rounds re-run the independent lane alone. Per round: fix verified findings and re-validate,
+   record rejected ones with their verification result, and put judgment calls to the user.
+   When findings stop converging across rounds, stop and consult instead of looping further
 8. **Report** — as text: open with a prose overview of what was changed and why, then changed
    files, validation results, review rounds with fixed/rejected findings, and any deviation
    from the Issue with its reason. The HTML report belongs to the outermost `ship-issue`
