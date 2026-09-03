@@ -21,8 +21,7 @@ may be stale). State the chosen target in the report.
 
 ### 2. Claude lane
 
-Run the product's independent review lane over the target diff — the model-routing rule maps it
-(currently the `rules-reviewer` and `code-reviewer` agents run independently; see `CLAUDE.md`).
+Run the product's independent review lane over the target diff — the model-routing rule maps it.
 
 ### 3. Codex lane
 
@@ -42,10 +41,8 @@ Verify both lanes' findings (each is a hypothesis until checked against the code
 ### 5. Present to the user
 
 Report per bucket, severity-ordered with `file:line`; include rejected findings with their
-verification result, plus 推奨アクション (修正する / しない / 別 Issue 化). When the user
-invoked this skill directly, also publish the report as an HTML Artifact; as an inner step of
-another skill, skip it — the outermost report owns the HTML. Wait for the user's decision — do
-not modify code without explicit approval.
+verification result, plus 推奨アクション (修正する / しない / 別 Issue 化). Wait for the
+user's decision — do not modify code without explicit approval.
 
 ## Notes
 

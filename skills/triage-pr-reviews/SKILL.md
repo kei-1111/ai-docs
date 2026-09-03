@@ -100,11 +100,6 @@ Deliver everything in a single response and wait for the user's call:
    - Open the split-out issues now?
    - Reply to any "Won't fix" comments?
 
-When the user invoked this skill directly, also render the classification report and fix plans
-as an HTML page (Claude Code: publish it as an Artifact; a product without artifact publishing
-writes the HTML file and reports its path); when running as an inner step of another skill, skip
-the HTML — the outermost report owns it.
-
 ### 7. Implement approved fixes
 
 Only when the user approves the fix plan in step 6 — a bare "look at the reviews" request still
