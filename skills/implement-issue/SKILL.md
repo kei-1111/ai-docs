@@ -39,8 +39,8 @@ created by `ship-issue`'s dispatch step.
 6. **Validate** — run every applicable row from `.claude/rules/project-validation.md`
 7. **Review** — the same loop at every change size, ending only when a round produces zero
    actionable findings. Every round runs the independent review lane and, where the product has
-   one, the cross-model reviewer in parallel on the same diff (lanes kept independent; a change
-   implemented through the Codex lane gets its cross-model check from the Claude lane).
+   one, the cross-model reviewer in parallel on the same diff, with the lanes kept independent.
+   A change implemented through the Codex lane gets its cross-model check from the Claude lane.
    Per round: fix verified findings and re-validate,
    record rejected ones with their verification result, and put judgment calls to the user.
    When findings stop converging across rounds, stop and consult instead of looping further
