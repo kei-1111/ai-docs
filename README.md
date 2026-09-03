@@ -53,10 +53,9 @@ A shared document must not name any other project-specific file, module, or conv
 
 ## Autonomous dispatch
 
-`ship-issue` is Orca-first: invoked outside the target Issue's branch on a host with the
-[Orca ADE](https://www.onorca.dev/) CLI, it dispatches the Issue into an Orca-managed worktree
-and launches the agent there, so execution is monitored in the Orca app. Hosts without Orca
-keep the in-place flow.
+These documents presume the [Orca ADE](https://www.onorca.dev/) CLI on every host. `ship-issue`
+dispatches each Issue into its own Orca-managed worktree and launches the agent there, so
+execution is monitored in the Orca app.
 
 ## Editing and updating
 
