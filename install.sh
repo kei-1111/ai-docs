@@ -9,8 +9,8 @@
 #   --codex   link .codex/skills/<name> for the skills Codex uses while implementing
 #
 # After installing, the consumer still provides by hand:
-#   - the fixed-name profile rules .claude/rules/project-validation.md and
-#     .claude/rules/doc-surfaces.md (see README.md — Consumer contract)
+#   - the fixed-name files .claude/rules/project-validation.md and
+#     ai-docs/project/doc-surfaces.md (see README.md — Consumer contract)
 #   - agent wrappers (.claude/agents/*.md / .codex/agents/*.toml) pointing at
 #     <shared>/agents/<name>/SKILL.md
 #
@@ -81,4 +81,4 @@ if [ -n "$do_claude" ]; then
   done
 fi
 
-printf '\nDone. Remaining manual steps: profile rules (project-validation.md, doc-surfaces.md) and agent wrappers — see %s/README.md\n' "$shared_dir"
+printf '\nDone. Remaining manual steps: the fixed-name files (project-validation.md, doc-surfaces.md) and agent wrappers — see %s/README.md\n' "$shared_dir"
