@@ -13,8 +13,8 @@ smallest natural edit. Run after the code change is complete and before its hand
 
 ## Document surfaces
 
-The project's surface inventory is canonical in `.claude/rules/doc-surfaces.md` — a fixed-name
-rule defined by every project. Read it and check each listed surface against the change.
+The project's surface inventory is canonical in `ai-docs/project/doc-surfaces.md` — a fixed-name
+file defined by every project. Read it and check each listed surface against the change.
 
 ## Workflow
 

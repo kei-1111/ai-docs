@@ -40,8 +40,9 @@ consuming repository provides:
 
 - `.claude/rules/project-validation.md` — the per-change-type validation table and validation
   notes (fixed name, always defined)
-- `.claude/rules/doc-surfaces.md` — the document-surface inventory read by `update-docs`
-  (fixed name, always defined)
+- `ai-docs/project/doc-surfaces.md` — the document-surface inventory read by `update-docs`
+  (fixed name, always defined; kept outside `.claude/rules/` so it is not loaded into every
+  session)
 - Project rule overlays (`*.project.md`) for seams of the rule cores — commit scopes,
   test-suite mapping, hooks, project invariants
 - Conditional references ("when the project defines one") — e.g. a TDD rule
