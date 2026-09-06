@@ -50,14 +50,16 @@ incorrect concerns:
 
 In one response, in Japanese: the count breakdown, each "won't fix" with its verification
 result, each "separate issue" candidate with a proposed English title (`<type>: <description>`),
-and each "fix" with what will change and where.
+and each "fix" with what will change and where. A "fix" whose resolution involves a judgment
+call — a design choice, or a scope the comment leaves open — is marked as such, with the options.
 
 ### 5. Apply the fixes
 
-Implement every "fix" through the product's implementation lane, validate per
-`.claude/rules/project-validation.md`, and commit per logical unit. Filing the "separate issue"
-candidates and replying to review threads are separate asks — never do either unprompted.
-Finish by reporting the commits created and any deviation from the classification.
+Implement every clear-cut "fix" (a verified bug, rule violation, or typo) through the product's
+implementation lane, validate per `.claude/rules/project-validation.md`, and commit per logical
+unit. Judgment-call fixes wait for the user's answer, then follow the same path. Filing the
+"separate issue" candidates and replying to review threads are separate asks — never do either
+unprompted. Finish by reporting the commits created and any deviation from the classification.
 
 ## Notes
 
