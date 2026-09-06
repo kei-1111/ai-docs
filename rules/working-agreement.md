@@ -21,7 +21,6 @@ approach; project-specific invariants are stated in the project rules.
 
 ## Before Editing
 
-- Check `git status`; preserve user changes and avoid unrelated cleanup.
 - Verify referenced APIs, tasks, modules, and paths in the current checkout instead of relying on documentation alone.
 - For a non-trivial change, define verifiable success criteria first — the narrowest validation that must pass and, for user-visible UI changes, what to confirm in the running product — and validate against them before reporting completion.
 
