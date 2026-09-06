@@ -19,17 +19,7 @@ Follow `.claude/rules/git-workflow.md` — Pull Requests (read it first):
 
 ## Workflow
 
-1. **Check the current state**
-   - Run `git status` to review changes
-   - Run `git log` to review recent commits
-   - Confirm the current branch and base branch
-
-2. **Analyze the changes**
-   - Review every commit message
-   - Inspect the modified files
-   - Understand the purpose and scope of impact
-
-3. **Compose the PR title and body**
+1. **Compose the PR title and body**
    - Extract the Issue number from the branch name (format: `<type>/#<issue-number>`)
    - Run `gh issue view` to fetch Issue information and reuse the Issue title as the PR title
    - Build the body from `.github/PULL_REQUEST_TEMPLATE.md` (canonical): reproduce its
@@ -40,15 +30,13 @@ Follow `.claude/rules/git-workflow.md` — Pull Requests (read it first):
      pass each to the repeatable `--attach` flag (`gh pr create --attach <image>`) — gh uploads
      the files and rewrites the references in place
 
-4. **Create the pull request**
-   - Print the proposed title and body, then continue straight into creating the PR
+2. **Create the pull request**
    - Run `git push -u origin <branch-name>` if needed
    - Create the PR with `gh pr create`
    - Print the URL of the created PR
 
 ## Notes
 
-- If there are uncommitted changes, prompt the user to commit them first
 - Write the body and any GitHub comments in English
 
 ## Argument handling

@@ -11,11 +11,7 @@ Compose a GitHub Issue that matches one of the repository's Markdown issue templ
 
 ## Convention
 
-Follow `.claude/rules/git-workflow.md` — Issues (read it first):
-
-- **Title**: the same Conventional Commits format as commits (`<type>: <description>`, scope optional) — write the title in **English**
-- **Body**: written concisely in **English**, following the section structure of the matching template
-- **Type**: choose the template whose purpose matches the task
+Follow `.claude/rules/git-workflow.md` — Issues (read it first).
 
 ## Issue templates (`.github/ISSUE_TEMPLATE/`)
 
@@ -45,24 +41,7 @@ written beneath them.
      verified either way stays in the body labeled as an assumption, not a fact.
    Skip this step when the Issue has no investigative premise (typos, self-evident chores). For
    high-impact Issues, escalate to the project's cross-model review lane when one exists.
-5. **Create** — create the Issue without adding assignees, labels, milestones, or projects unless requested
-
-   ```bash
-   gh issue create \
-     --title "docs: update AI documentation" \
-     --body "$(cat <<'EOF'
-   ## Summary
-
-   Evaluate and update the AI documentation after practical use.
-
-   ## Target Documents
-
-   - `AGENTS.md`
-   - `CLAUDE.md`
-   EOF
-   )"
-   ```
-
+5. **Create** — `gh issue create`, without adding assignees, labels, milestones, or projects unless requested
 6. **Hand off or stop** — print the created issue URL, then by default continue straight into
    the autonomous flow: invoke `ship-issue <N>`, whose Dispatch step moves the work into its
    own dispatched worktree — never the current checkout's branch. When the request that led
@@ -71,12 +50,6 @@ written beneath them.
    — never ask again once the user has already asked for the implementation. Stop with the
    report instead when the user asked to only record the issue (記録だけ / "file it for
    later") or for backlog or checklist batches
-
-## Notes
-
-- One issue = one responsibility; if the request bundles several concerns, propose splitting before creating
-- Filing many findings at once, and how Issues map to PRs: follow `.claude/rules/git-workflow.md` — Issues
-- The issue Type determines the branch prefix later — the mapping is canonical in `.claude/rules/git-workflow.md` — Branches
 
 ## Argument handling
 
