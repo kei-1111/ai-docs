@@ -44,7 +44,7 @@ incorrect concerns:
 |--------|----------|
 | **Fix** | The cited problem exists after verification: bug, code-quality issue, rule violation, typo |
 | **Won't fix** | Verification did not confirm the problem / out of scope / an existing pattern or already-chosen alternative takes precedence |
-| **Separate issue** | Verified, but too large or a different concern from this PR |
+| **Separate issue** | Verified, but a different concern from this PR's — size alone never moves a fix here |
 
 ### 4. Report the classification
 
