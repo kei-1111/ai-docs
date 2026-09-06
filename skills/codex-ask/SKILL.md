@@ -34,9 +34,6 @@ codex exec --sandbox read-only - < <prompt-file>
 ```
 
 - The prompt is the only argument forwarded; the skill does not auto-attach diffs, file contents, or other context. If the user wants a diff reviewed, they should mention it in their request and Codex will run `git diff` itself.
-- Use a generous finite Bash timeout. If `codex exec` times out or fails, report that rather than
-  retrying blindly.
-- Large outputs may be persisted by the Bash tool to a file — read it back if needed.
 
 ### 3. Summarize and compare
 
@@ -54,12 +51,9 @@ Report in this shape:
 - **Claude's view**: 3–5 bullets (or "agrees with Codex" if so)
 - **Suggested next action**: what to do (apply / discuss further / ignore)
 
-Wait for the user's decision. Do not modify code based on Codex's response without explicit user approval.
-
 ## Notes
 
 - **Boundary**: this skill relays a free-form question; for a structured review of code changes (working tree, branch, or PR) use `codex-review` instead.
-- **No secret leakage.** Before passing a prompt to `codex exec`, confirm it contains no credentials, API keys, or other secrets. The prompt is sent to Codex's backend.
 
 ## Arguments
 

@@ -30,11 +30,8 @@ uncommitted changes, else branch vs `origin/main`), enumerates the applicable ru
 `scripts/list_matching_rules.sh`, writes a self-contained prompt telling Codex to inspect the
 diff itself and verify claims before reporting (with "no findings" explicitly allowed), and
 runs `codex exec --sandbox read-only` with the prompt passed via stdin — reviews never get
-workspace-write. `--dry-run` prints the composed prompt without calling Codex.
-
-- Use a generous finite timeout. If the command times out or fails, report that rather than
-  retrying blindly.
-- Add caller context that the script cannot know (e.g. what was adjudicated in earlier rounds) via `-f`.
+workspace-write. `--dry-run` prints the composed prompt without calling Codex. Add caller
+context that the script cannot know (e.g. what was adjudicated in earlier rounds) via `-f`.
 
 ### 3. Verify before relaying
 
@@ -50,12 +47,6 @@ Codex is an LLM reviewer — every finding is a hypothesis until verified:
 - **棄却した指摘**: 棄却理由(検証結果)付き
 - **自身の見解**: Codex が見落とした点や同意/不同意
 - **推奨アクション**: 修正する / しない / 別 Issue 化
-
-Wait for the user's decision. Do not modify code based on the review without explicit approval.
-
-## Notes
-
-- **No secret leakage**: the prompt is sent to Codex's backend — never include credentials or tokens
 
 ## Argument handling
 

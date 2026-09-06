@@ -36,7 +36,6 @@ Delegate to Sol when the plan is settled enough that the spec determines the cod
 
 ## Notes
 
-- **No secret leakage**: the brief is sent to Codex's backend — never include credentials or tokens.
 - **No silent fallback**: if the Codex CLI is unavailable, report it and ask whether to continue on Claude — never switch silently.
 - **Language**: report to the user in Japanese, matching the rest of the project workflow.
 

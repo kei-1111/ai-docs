@@ -31,8 +31,8 @@ present the Codex result standalone — it feeds the reconciliation below.
 
 ### 4. Reconcile
 
-Verify both lanes' findings (each is a hypothesis until checked against the code and
-`.claude/rules/*.md`), then bucket them:
+Verify the Claude lane's findings the same way as the Codex lane's (`codex-review` step 3), then
+bucket them:
 
 - **一致** — both lanes report it (highest confidence)
 - **相違** — the lanes assess the same code differently; investigate and take a position
@@ -41,12 +41,7 @@ Verify both lanes' findings (each is a hypothesis until checked against the code
 ### 5. Present to the user
 
 Report per bucket, severity-ordered with `file:line`; include rejected findings with their
-verification result, plus 推奨アクション (修正する / しない / 別 Issue 化). Wait for the
-user's decision — do not modify code without explicit approval.
-
-## Notes
-
-- **No secret leakage**: the Codex-lane prompt is sent to Codex's backend — never include credentials or tokens
+verification result, plus 推奨アクション (修正する / しない / 別 Issue 化).
 
 ## Argument handling
 
